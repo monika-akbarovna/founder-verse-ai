@@ -375,10 +375,11 @@ export function Footer() {
 function SectionHeading({ eyebrow, title, sub }: { eyebrow: string; title: React.ReactNode; sub?: string }) {
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <motion.div {...fadeUp} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+      <motion.div {...fadeUp} className="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+        <span className="h-1 w-1 rounded-full bg-[var(--neon-purple)] shadow-[0_0_8px_var(--neon-purple)]" />
         {eyebrow}
       </motion.div>
-      <motion.h2 {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.08 }} className="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">
+      <motion.h2 {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.08 }} className="mt-6 text-4xl font-semibold leading-[1.05] tracking-[-0.03em] md:text-[3.25rem]">
         <span className="text-gradient">{title}</span>
       </motion.h2>
       {sub && (
