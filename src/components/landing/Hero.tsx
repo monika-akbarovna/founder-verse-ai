@@ -5,10 +5,26 @@ const particles = Array.from({ length: 28 });
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-40 pb-32">
+    <section className="relative overflow-hidden pt-44 pb-40">
       {/* Background layers */}
       <div className="pointer-events-none absolute inset-0 bg-gradient-hero" />
       <div className="pointer-events-none absolute inset-0 grid-bg" />
+      {/* Aurora blobs */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="absolute -top-32 left-1/2 h-[720px] w-[720px] -translate-x-1/2 rounded-full blur-[140px] opacity-60 animate-aurora"
+          style={{ background: "radial-gradient(circle at 30% 30%, var(--neon-purple), transparent 60%)" }}
+        />
+        <div
+          className="absolute top-40 -right-40 h-[520px] w-[520px] rounded-full blur-[140px] opacity-50 animate-aurora"
+          style={{ background: "radial-gradient(circle at 50% 50%, var(--neon-blue), transparent 60%)", animationDelay: "-6s" }}
+        />
+        <div
+          className="absolute -bottom-32 -left-32 h-[520px] w-[520px] rounded-full blur-[140px] opacity-40 animate-aurora"
+          style={{ background: "radial-gradient(circle at 50% 50%, var(--neon-cyan), transparent 60%)", animationDelay: "-12s" }}
+        />
+      </div>
+      <div className="pointer-events-none absolute inset-0 noise opacity-40" />
 
       {/* Floating particles */}
       <div className="pointer-events-none absolute inset-0">
@@ -56,9 +72,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="mx-auto mt-8 max-w-4xl text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl"
+          className="mx-auto mt-8 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-[-0.035em] md:text-[5.5rem]"
         >
-          <span className="text-gradient">Simulate Your Startup</span>
+          <span className="text-gradient animate-shimmer-text">Simulate Your Startup</span>
           <br />
           <span className="text-gradient-brand">Before You Risk Real Money</span>
         </motion.h1>
@@ -81,16 +97,20 @@ export function Hero() {
         >
           <a
             href="#cta"
-            className="group relative inline-flex items-center gap-2 rounded-full bg-gradient-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow-purple transition-transform hover:scale-[1.03]"
+            className="shimmer-btn group relative inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow-purple transition-all duration-500 hover:scale-[1.04] hover:shadow-[0_0_80px_-10px_var(--neon-purple)]"
           >
-            Run Simulation
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            <span className="relative z-10 flex items-center gap-2">
+              Run Simulation
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </span>
           </a>
           <a
             href="#"
-            className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-white/10"
+            className="glass group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-500 hover:bg-white/[0.08] hover:border-white/20"
           >
-            <Play className="h-4 w-4" />
+            <span className="grid h-5 w-5 place-items-center rounded-full bg-white/10 transition-transform group-hover:scale-110">
+              <Play className="h-2.5 w-2.5 fill-current" />
+            </span>
             Watch Demo
           </a>
         </motion.div>
@@ -137,7 +157,8 @@ function FloatingCard({
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay }}
-      className={`glass-strong glow-ring relative z-20 items-center gap-3 rounded-2xl p-3 pr-5 shadow-elegant animate-float-slow ${className}`}
+      whileHover={{ scale: 1.06, y: -4 }}
+      className={`glass-strong glow-ring reflective relative z-20 items-center gap-3 rounded-2xl p-3 pr-5 shadow-elegant animate-float-slow ${className}`}
     >
       <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-glow-purple">
         {icon}
@@ -159,7 +180,7 @@ function DashboardPreview() {
       initial={{ opacity: 0, y: 60, rotateX: 8 }}
       animate={{ opacity: 1, y: 0, rotateX: 0 }}
       transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-      className="glass-strong glow-ring relative overflow-hidden rounded-3xl p-2 shadow-elegant"
+      className="glass-strong glow-ring reflective relative overflow-hidden rounded-3xl p-2 shadow-elegant"
       style={{ perspective: 1000 }}
     >
       <div className="rounded-[1.25rem] bg-[oklch(0.1_0.02_270)] p-6">
