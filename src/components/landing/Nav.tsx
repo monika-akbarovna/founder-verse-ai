@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 export function Nav() {
   const links = ["Product", "Agents", "Pricing", "Docs"];
@@ -26,9 +27,9 @@ export function Nav() {
         </ul>
         <div className="flex items-center gap-2">
           <a href="#" className="hidden sm:inline text-sm text-muted-foreground hover:text-foreground transition-colors">Sign in</a>
-          <a href="#cta" className="shimmer-btn relative rounded-full bg-gradient-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground shadow-glow-purple transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_var(--neon-purple)]">
-            <span className="relative z-10">Launch</span>
-          </a>
+          <Link to="/simulator" className="shimmer-btn relative rounded-full bg-gradient-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground shadow-glow-purple transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_var(--neon-purple)]">
+            <span className="relative z-10">Launch Sim</span>
+          </Link>
         </div>
       </nav>
     </motion.header>
