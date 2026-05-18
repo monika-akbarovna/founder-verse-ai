@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Play, TrendingUp, Sparkles, Activity, DollarSign } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 const particles = Array.from({ length: 28 });
 
@@ -95,15 +96,15 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.45 }}
           className="mt-10 flex flex-wrap items-center justify-center gap-3"
         >
-          <a
-            href="#cta"
+          <Link
+            to="/simulator"
             className="shimmer-btn group relative inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow-purple transition-all duration-500 hover:scale-[1.04] hover:shadow-[0_0_80px_-10px_var(--neon-purple)]"
           >
             <span className="relative z-10 flex items-center gap-2">
               Run Simulation
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>
-          </a>
+          </Link>
           <a
             href="#"
             className="glass group inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-500 hover:bg-white/[0.08] hover:border-white/20"
