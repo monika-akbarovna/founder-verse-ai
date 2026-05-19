@@ -307,6 +307,24 @@ function Dot({ delay }: { delay: number }) {
   );
 }
 
+function StreamingCursor() {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="-mt-3 ml-12 flex items-center gap-1.5 text-[10px] uppercase tracking-[0.15em] text-muted-foreground/70"
+    >
+      <motion.span
+        className="inline-block h-2 w-2 rounded-full bg-[color:var(--neon-cyan)]"
+        animate={{ opacity: [0.3, 1, 0.3], scale: [0.9, 1.15, 0.9] }}
+        transition={{ duration: 1.1, repeat: Infinity }}
+        style={{ boxShadow: "0 0 10px var(--neon-cyan)" }}
+      />
+      Streaming response
+    </motion.div>
+  );
+}
+
 export function InvestorAvatar({
   size = "md",
   pulse = false,
