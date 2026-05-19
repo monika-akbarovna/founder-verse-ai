@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ThreadSidebar } from "@/components/investor/ThreadSidebar";
-import { InvestorChat } from "@/components/investor/InvestorChat";
+import { InvestorChatWithAnalytics } from "@/components/investor/InvestorChat";
 
 export const Route = createFileRoute("/investor/$threadId")({
   head: () => ({
@@ -25,7 +25,7 @@ function ThreadPage() {
       <section className="relative flex min-w-0 flex-1">
         {/* keyed by threadId to remount cleanly between threads */}
         <div key={threadId} className="flex h-full w-full min-w-0">
-          <InvestorChat threadId={threadId} />
+          <InvestorChatWithAnalytics threadId={threadId} />
         </div>
       </section>
     </main>
