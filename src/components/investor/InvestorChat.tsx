@@ -4,6 +4,7 @@ import { DefaultChatTransport, type UIMessage } from "ai";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp, Square, TrendingUp, AlertTriangle, Target, Zap } from "lucide-react";
 import { saveThreadMessages, loadThread } from "./threadStore";
+import { InvestorAnalytics } from "./InvestorAnalytics";
 
 const SUGGESTIONS = [
   { icon: TrendingUp, label: "Evaluate my startup idea", text: "I'm building a B2B AI agent platform that automates SOC2 compliance for mid-market SaaS. Pre-revenue, two technical co-founders. Evaluate the opportunity." },
@@ -12,12 +13,8 @@ const SUGGESTIONS = [
   { icon: Zap, label: "Valuation estimate", text: "Seed-stage AI dev tools company, $40k MRR, 18% MoM growth, 2 founders ex-Stripe. What's a defensible valuation?" },
 ];
 
-export function InvestorChat({ threadId }: { threadId: string }) {
+export function InvestorChatWithAnalytics({ threadId }: { threadId: string }) {
   const [initial] = useState<UIMessage[]>(() => loadThread(threadId)?.messages ?? []);
-  const [input, setInput] = useState("");
-  const taRef = useRef<HTMLTextAreaElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
   const transport = useMemo(() => new DefaultChatTransport({ api: "/api/chat" }), []);
 
   const { messages, sendMessage, status, stop, error } = useChat({
@@ -39,6 +36,53 @@ export function InvestorChat({ threadId }: { threadId: string }) {
     saveThreadMessages(threadId, messages, firstUserText);
   }, [messages, threadId]);
 
+  const submit = (text: string) => {
+    const t = text.trim();
+    if (!t || isLoading) return;
+    void sendMessage({ text: t });
+  };
+
+  return (
+    <div className="flex h-full w-full min-w-0">
+      <ChatPane
+        threadId={threadId}
+        messages={messages}
+        status={status}
+        isLoading={isLoading}
+        error={error}
+        onSubmit={submit}
+        onStop={stop}
+      />
+      <InvestorAnalytics
+        messages={messages}
+        threadId={threadId}
+        isThinking={isLoading}
+      />
+    </div>
+  );
+}
+
+function ChatPane({
+  threadId,
+  messages,
+  status,
+  isLoading,
+  error,
+  onSubmit,
+  onStop,
+}: {
+  threadId: string;
+  messages: UIMessage[];
+  status: string;
+  isLoading: boolean;
+  error: Error | undefined;
+  onSubmit: (text: string) => void;
+  onStop: () => void;
+}) {
+  const [input, setInput] = useState("");
+  const taRef = useRef<HTMLTextAreaElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   // Auto-scroll
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -53,13 +97,14 @@ export function InvestorChat({ threadId }: { threadId: string }) {
     const t = text.trim();
     if (!t || isLoading) return;
     setInput("");
-    void sendMessage({ text: t });
+    onSubmit(t);
   };
 
   return (
-    <div className="flex h-full min-h-0 flex-col">
+    <div className="relative flex h-full min-w-0 flex-1 flex-col">
       {/* Header */}
-      <div className="border-b border-white/5 px-6 py-4">
+      <div className="relative border-b border-white/5 px-6 py-4">
+        <div className="pointer-events-none absolute inset-x-0 -bottom-px h-px bg-gradient-to-r from-transparent via-[color:var(--neon-purple)]/40 to-transparent" />
         <div className="flex items-center gap-3">
           <InvestorAvatar pulse={isLoading} />
           <div className="min-w-0">
@@ -88,6 +133,9 @@ export function InvestorChat({ threadId }: { threadId: string }) {
           </AnimatePresence>
 
           {status === "submitted" && <ThinkingBubble />}
+          {status === "streaming" && messages.at(-1)?.role === "assistant" && (
+            <StreamingCursor />
+          )}
           {error && (
             <div className="rounded-xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive-foreground">
               The investor went silent. {error.message || "Try again in a moment."}
@@ -256,6 +304,24 @@ function Dot({ delay }: { delay: number }) {
       animate={{ y: [0, -4, 0], opacity: [0.4, 1, 0.4] }}
       transition={{ duration: 1.2, repeat: Infinity, delay }}
     />
+  );
+}
+
+function StreamingCursor() {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="-mt-3 ml-12 flex items-center gap-1.5 text-[10px] uppercase tracking-[0.15em] text-muted-foreground/70"
+    >
+      <motion.span
+        className="inline-block h-2 w-2 rounded-full bg-[color:var(--neon-cyan)]"
+        animate={{ opacity: [0.3, 1, 0.3], scale: [0.9, 1.15, 0.9] }}
+        transition={{ duration: 1.1, repeat: Infinity }}
+        style={{ boxShadow: "0 0 10px var(--neon-cyan)" }}
+      />
+      Streaming response
+    </motion.div>
   );
 }
 
