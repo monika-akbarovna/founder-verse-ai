@@ -4,6 +4,7 @@ import {
   Rocket, Brain, Sparkles, TrendingUp, ShieldAlert, Users, Flame, Activity,
   DollarSign, Target, ArrowRight, Loader2, Cpu, Zap, MessageSquare, LineChart,
 } from "lucide-react";
+import { WhatIfEngine } from "./WhatIfEngine";
 
 type FormState = {
   idea: string;
