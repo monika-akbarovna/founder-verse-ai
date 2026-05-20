@@ -12,7 +12,7 @@ type FormState = {
   businessType: string;
 };
 
-type Prediction = {
+export type Prediction = {
   survival: number;
   investor: number;
   viral: number;
