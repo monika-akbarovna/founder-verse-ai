@@ -4,6 +4,7 @@ import {
   Rocket, Brain, Sparkles, TrendingUp, ShieldAlert, Users, Flame, Activity,
   DollarSign, Target, ArrowRight, Loader2, Cpu, Zap, MessageSquare, LineChart,
 } from "lucide-react";
+import { WhatIfEngine } from "./WhatIfEngine";
 
 type FormState = {
   idea: string;
@@ -12,7 +13,7 @@ type FormState = {
   businessType: string;
 };
 
-type Prediction = {
+export type Prediction = {
   survival: number;
   investor: number;
   viral: number;
@@ -335,6 +336,9 @@ function ResultDashboard({ result, form }: { result: Prediction; form: FormState
           ))}
         </div>
       </div>
+
+      {/* What-If Scenario Engine */}
+      <WhatIfEngine baseline={result} />
     </motion.div>
   );
 }
