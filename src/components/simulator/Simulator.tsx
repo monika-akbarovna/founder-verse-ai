@@ -336,6 +336,9 @@ function ResultDashboard({ result, form }: { result: Prediction; form: FormState
           ))}
         </div>
       </div>
+
+      {/* What-If Scenario Engine */}
+      <WhatIfEngine baseline={result} />
     </motion.div>
   );
 }
