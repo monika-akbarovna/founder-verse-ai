@@ -253,7 +253,7 @@ export function FutureTimeline({ baseline }: { baseline: Prediction }) {
 function MetricCard({
   icon: Icon, label, value, accent, chart,
 }: {
-  icon: React.ComponentType<{ className?: string }>;
+  icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
   label: string; value: string; accent: string; chart: React.ReactNode;
 }) {
   return (
