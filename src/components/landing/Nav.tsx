@@ -21,7 +21,7 @@ export function Nav() {
         <ul className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
           {links.map((l) => (
             <li key={l}>
-              <a href={`#${l.toLowerCase()}`} className="story-link transition-colors hover:text-foreground">{l}</a>
+              <a href={`#${l.toLowerCase()}`} className="relative transition-colors hover:text-foreground after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-gradient-to-r after:from-[var(--neon-purple)] after:to-[var(--neon-blue)] after:transition-transform after:duration-300 hover:after:scale-x-100">{l}</a>
             </li>
           ))}
         </ul>
