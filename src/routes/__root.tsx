@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { AmbientParticles } from "@/components/ambient/AmbientParticles";
 
 function NotFoundComponent() {
   return (
@@ -113,7 +114,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <AmbientParticles />
+      <div className="relative z-10">
+        <Outlet />
+      </div>
     </QueryClientProvider>
   );
 }
