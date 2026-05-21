@@ -11,7 +11,7 @@ export function Nav() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className="fixed top-4 inset-x-0 z-50 mx-auto max-w-6xl px-4"
     >
-      <nav className="glass-strong relative flex items-center justify-between rounded-full px-5 py-2.5 shadow-elegant">
+      <nav className="glass-premium relative flex items-center justify-between rounded-full px-5 py-2.5 shadow-elegant transition-shadow duration-500 hover:shadow-glow-purple">
         <a href="#" className="flex items-center gap-2">
           <span className="grid h-7 w-7 place-items-center rounded-md bg-gradient-primary shadow-glow-purple">
             <Sparkles className="h-4 w-4 text-primary-foreground" />
@@ -21,7 +21,7 @@ export function Nav() {
         <ul className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
           {links.map((l) => (
             <li key={l}>
-              <a href={`#${l.toLowerCase()}`} className="transition-colors hover:text-foreground">{l}</a>
+              <a href={`#${l.toLowerCase()}`} className="relative transition-colors hover:text-foreground after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-gradient-to-r after:from-[var(--neon-purple)] after:to-[var(--neon-blue)] after:transition-transform after:duration-300 hover:after:scale-x-100">{l}</a>
             </li>
           ))}
         </ul>
