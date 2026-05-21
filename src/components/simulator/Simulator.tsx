@@ -5,6 +5,7 @@ import {
   DollarSign, Target, ArrowRight, Loader2, Cpu, Zap, MessageSquare, LineChart,
 } from "lucide-react";
 import { WhatIfEngine } from "./WhatIfEngine";
+import { FutureTimeline } from "./FutureTimeline";
 
 type FormState = {
   idea: string;
@@ -339,6 +340,9 @@ function ResultDashboard({ result, form }: { result: Prediction; form: FormState
 
       {/* What-If Scenario Engine */}
       <WhatIfEngine baseline={result} />
+
+      {/* Future Timeline */}
+      <FutureTimeline baseline={result} />
     </motion.div>
   );
 }
