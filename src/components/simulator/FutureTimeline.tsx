@@ -44,40 +44,40 @@ function buildStages(b: Prediction): Stage[] {
 
   return [
     {
-      id: "m1", label: "Month 1", sub: "Launch Window", t: 1,
+      id: "m1", label: "Месяц 1", sub: "Окно запуска", t: 1,
       users: u1, growth: 22 + Math.round(seed * 18), valuation: v1,
-      expansion: ["Beta cohort onboarding", "Founder-led sales", "Initial PMF probes"],
-      prediction: "Strong narrative attracts early evangelists. Watch activation closely — first 100 power users define your wedge.",
+      expansion: ["Онбординг бета-когорты", "Продажи через основателя", "Первые проверки PMF"],
+      prediction: "Сильный нарратив притягивает первых евангелистов. Следите за активацией — первые 100 power-юзеров задают ваш wedge.",
       confidence: 62 + Math.round(seed * 18),
     },
     {
-      id: "m6", label: "Month 6", sub: "Traction Curve", t: 6,
+      id: "m6", label: "Месяц 6", sub: "Кривая traction", t: 6,
       users: u6, growth: 28 + Math.round(seed * 14), valuation: v6,
-      expansion: ["Adjacent ICP segment", "Self-serve funnel", "Design-partner case studies"],
-      prediction: "Compounding referrals kick in. Hire a growth lead before paid CAC overtakes organic.",
+      expansion: ["Соседний ICP-сегмент", "Self-serve воронка", "Кейсы design-партнёров"],
+      prediction: "Включаются компаундящие рефералы. Наймите growth-лида до того, как платный CAC обгонит organic.",
       confidence: 68 + Math.round(seed * 18),
     },
     {
-      id: "y1", label: "Year 1", sub: "Scale Mode", t: 12,
+      id: "y1", label: "Год 1", sub: "Режим масштаба", t: 12,
       users: u12, growth: 18 + Math.round(seed * 10), valuation: v12,
-      expansion: ["Seed → Series A", "API platform layer", "Mid-market motion"],
-      prediction: "Category narrative crystallizes. A breakout competitor will emerge — out-execute on retention, not features.",
+      expansion: ["Seed → Series A", "API-платформенный слой", "Mid-market motion"],
+      prediction: "Нарратив категории кристаллизуется. Появится прорывной конкурент — выигрывайте на retention, а не на фичах.",
       confidence: 71 + Math.round(seed * 16),
     },
     {
-      id: "y3", label: "Year 3", sub: "Category Capture", t: 36,
+      id: "y3", label: "Год 3", sub: "Захват категории", t: 36,
       users: u36, growth: 9 + Math.round(seed * 8), valuation: v36,
-      expansion: ["EU + APAC expansion", "Enterprise tier", "Acquisitions of tooling"],
-      prediction: "Platform pull becomes the moat. Margin expansion through AI ops compounds enterprise ACVs.",
+      expansion: ["Экспансия в EU и APAC", "Enterprise-тариф", "Покупка тулинга"],
+      prediction: "Платформенный pull становится моатом. Расширение маржи через AI-операции компаундит enterprise ACV.",
       confidence: 74 + Math.round(seed * 14),
     },
     {
-      id: "y5", label: "Year 5", sub: "Horizon Bet", t: 60,
+      id: "y5", label: "Год 5", sub: "Ставка на горизонт", t: 60,
       users: u60, growth: 5 + Math.round(seed * 6), valuation: v60,
-      expansion: ["IPO readiness", "Verticalized AI agents", "Developer ecosystem"],
+      expansion: ["Готовность к IPO", "Вертикализованные ИИ-агенты", "Экосистема разработчиков"],
       prediction: seed > 0.7
-        ? "Unicorn trajectory locked. Defensibility comes from data flywheel + distribution depth."
-        : "Durable mid-cap path. Optimize for cash-efficient growth and strategic optionality.",
+        ? "Траектория единорога зафиксирована. Защищённость идёт из data flywheel и глубины дистрибуции."
+        : "Устойчивый mid-cap путь. Оптимизируйте cash-efficient рост и стратегическую опциональность.",
       confidence: 76 + Math.round(seed * 14),
     },
   ];
@@ -96,18 +96,18 @@ export function FutureTimeline({ baseline }: { baseline: Prediction }) {
       <div className="relative flex items-end justify-between gap-2 mb-8">
         <div>
           <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[var(--neon-cyan)]/80">
-            <Sparkles className="h-3.5 w-3.5" /> Future Timeline
+            <Sparkles className="h-3.5 w-3.5" /> Таймлайн будущего
           </div>
           <h2 className="font-display text-3xl md:text-4xl font-semibold text-gradient mt-2">
-            Projected Startup Trajectory
+            Прогнозируемая траектория стартапа
           </h2>
           <p className="text-sm text-muted-foreground mt-2 max-w-xl">
-            NOVA forecasts your venture across five horizons. Tap any stage to unfold projected users, growth, valuation, and AI predictions.
+            NOVA прогнозирует ваш венчур на пяти горизонтах. Откройте любую стадию, чтобы увидеть пользователей, рост, оценку и ИИ-предсказания.
           </p>
         </div>
         <div className="hidden md:flex items-center gap-2 text-xs text-muted-foreground">
           <div className="h-2 w-2 rounded-full bg-[var(--neon-purple)] animate-pulse-glow" />
-          Simulation feed live
+          Поток симуляции в эфире
         </div>
       </div>
 
@@ -160,7 +160,7 @@ export function FutureTimeline({ baseline }: { baseline: Prediction }) {
                   {s.sub}
                 </div>
                 <div className="text-[11px] text-muted-foreground/70 mt-1">
-                  {fmt(s.users)} users
+                  {fmt(s.users)} польз.
                 </div>
               </button>
             );
@@ -179,21 +179,21 @@ export function FutureTimeline({ baseline }: { baseline: Prediction }) {
           >
             <MetricCard
               icon={Users}
-              label="Projected Users"
+              label="Прогноз пользователей"
               value={fmt(current.users)}
               accent="var(--neon-cyan)"
               chart={<UserBars seed={current.users} />}
             />
             <MetricCard
               icon={TrendingUp}
-              label="Startup Growth"
-              value={`+${current.growth}% MoM`}
+              label="Рост стартапа"
+              value={`+${current.growth}% м/м`}
               accent="var(--neon-purple)"
               chart={<GrowthLine intensity={current.growth} />}
             />
             <MetricCard
               icon={DollarSign}
-              label="Valuation"
+              label="Оценка"
               value={current.valuation}
               accent="var(--neon-blue)"
               chart={<ValuationGauge confidence={current.confidence} />}
@@ -202,7 +202,7 @@ export function FutureTimeline({ baseline }: { baseline: Prediction }) {
             <div className="lg:col-span-2 relative rounded-2xl glass p-5 overflow-hidden glow-ring">
               <div className="flex items-center gap-2 mb-4">
                 <Globe2 className="h-4 w-4 text-[var(--neon-cyan)]" />
-                <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Expansion Opportunities</div>
+                <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Возможности экспансии</div>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {current.expansion.map((e, i) => (
@@ -214,7 +214,7 @@ export function FutureTimeline({ baseline }: { baseline: Prediction }) {
                     className="relative rounded-xl border border-white/10 bg-white/[0.03] p-3 hover-lift"
                   >
                     <ArrowUpRight className="h-3.5 w-3.5 text-[var(--neon-purple)] absolute top-3 right-3" />
-                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground/70">Vector {i + 1}</div>
+                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground/70">Вектор {i + 1}</div>
                     <div className="mt-1 text-sm font-medium text-white/90">{e}</div>
                   </motion.div>
                 ))}
@@ -224,7 +224,7 @@ export function FutureTimeline({ baseline }: { baseline: Prediction }) {
             <div className="relative rounded-2xl p-5 overflow-hidden glass-strong glow-ring">
               <div className="flex items-center gap-2 mb-3">
                 <Brain className="h-4 w-4 text-[var(--neon-purple)]" />
-                <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">NOVA Prediction</div>
+                <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Предсказание NOVA</div>
               </div>
               <p className="text-sm text-white/85 leading-relaxed">{current.prediction}</p>
               <div className="mt-4 flex items-center gap-3">
@@ -240,7 +240,7 @@ export function FutureTimeline({ baseline }: { baseline: Prediction }) {
                 </div>
                 <div className="text-xs font-display text-white/80 tabular-nums">{current.confidence}%</div>
               </div>
-              <div className="text-[10px] text-muted-foreground mt-1 uppercase tracking-wider">Model confidence</div>
+              <div className="text-[10px] text-muted-foreground mt-1 uppercase tracking-wider">Уверенность модели</div>
               <Rocket className="absolute -bottom-4 -right-4 h-24 w-24 text-white/[0.03]" />
             </div>
           </motion.div>
@@ -342,7 +342,7 @@ function ValuationGauge({ confidence }: { confidence: number }) {
         />
       </svg>
       <div className="flex-1">
-        <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Investor signal</div>
+              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Сигнал инвестора</div>
         <div className="font-display text-lg text-white/90 tabular-nums">{pct}%</div>
       </div>
     </div>

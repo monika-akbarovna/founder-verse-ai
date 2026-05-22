@@ -53,7 +53,7 @@ export function useThreads() {
   const createThread = useCallback((): Thread => {
     const t: Thread = {
       id: makeId(),
-      title: "New deal review",
+      title: "Новый разбор сделки",
       updatedAt: Date.now(),
       messages: [],
     };
@@ -89,9 +89,9 @@ export function saveThreadMessages(id: string, messages: UIMessage[], titleHint?
   const threads = read();
   const existing = threads.find((t) => t.id === id);
   const title =
-    existing?.title && existing.title !== "New deal review"
+    existing?.title && existing.title !== "Новый разбор сделки" && existing.title !== "New deal review"
       ? existing.title
-      : titleHint?.slice(0, 60) || existing?.title || "New deal review";
+      : titleHint?.slice(0, 60) || existing?.title || "Новый разбор сделки";
   const updated: Thread = existing
     ? { ...existing, messages, title, updatedAt: Date.now() }
     : { id, title, messages, updatedAt: Date.now() };

@@ -42,7 +42,7 @@ export function ThreadSidebar({ activeId }: { activeId?: string }) {
               <span className="font-display text-sm font-semibold">NOVA-VC</span>
               <span className="h-1 w-1 rounded-full bg-emerald-400 shadow-[0_0_6px_currentColor]" />
             </div>
-            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Managing Partner</div>
+            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Управляющий партнёр</div>
           </div>
         </div>
         <button
@@ -50,7 +50,7 @@ export function ThreadSidebar({ activeId }: { activeId?: string }) {
           className="shimmer-btn mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-primary px-3 py-2 text-xs font-semibold text-primary-foreground shadow-glow-purple transition hover:scale-[1.01] hover:shadow-[0_0_30px_var(--neon-purple)]"
         >
           <Plus className="relative z-10 h-3.5 w-3.5" />
-          <span className="relative z-10">New deal review</span>
+          <span className="relative z-10">Новый разбор сделки</span>
         </button>
       </div>
 
@@ -60,7 +60,7 @@ export function ThreadSidebar({ activeId }: { activeId?: string }) {
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Search deals…"
+            placeholder="Поиск по сделкам…"
             className="w-full rounded-lg border border-white/5 bg-white/[0.03] py-1.5 pl-8 pr-2 text-xs text-foreground placeholder:text-muted-foreground/50 transition focus:border-white/15 focus:bg-white/[0.06] focus:outline-none"
           />
         </div>
@@ -70,7 +70,7 @@ export function ThreadSidebar({ activeId }: { activeId?: string }) {
         <div className="mb-2 flex items-center justify-between px-2">
           <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
             <Briefcase className="h-3 w-3" />
-            Workspace
+            Воркспейс
           </div>
           <span className="rounded-full border border-white/10 bg-white/5 px-1.5 py-0.5 text-[9px] tabular-nums text-muted-foreground">
             {filtered.length}
@@ -78,7 +78,7 @@ export function ThreadSidebar({ activeId }: { activeId?: string }) {
         </div>
         {!hydrated ? null : filtered.length === 0 ? (
           <div className="px-3 py-6 text-xs text-muted-foreground">
-            {q ? "No deals match." : "No conversations yet. Start a new deal review."}
+            {q ? "Совпадений нет." : "Разговоров пока нет. Начните новый разбор сделки."}
           </div>
         ) : (
           <div className="flex flex-col gap-4">
@@ -111,7 +111,7 @@ export function ThreadSidebar({ activeId }: { activeId?: string }) {
         className="relative flex items-center gap-2 border-t border-white/5 px-4 py-3 text-[10px] text-muted-foreground"
       >
         <Sparkles className="h-3 w-3 text-[color:var(--neon-cyan)]" />
-        Encrypted locally on this device
+        Зашифровано локально на этом устройстве
       </motion.div>
     </aside>
   );
@@ -171,7 +171,7 @@ function ThreadRow({
         <div className="min-w-0 flex-1">
           <div className="truncate font-medium">{thread.title}</div>
           <div className="truncate text-[10px] opacity-60">
-            {thread.messages.length} msg ·{" "}
+            {thread.messages.length} сообщ. ·{" "}
             {new Date(thread.updatedAt).toLocaleString(undefined, {
               month: "short",
               day: "numeric",
@@ -188,7 +188,7 @@ function ThreadRow({
           e.stopPropagation();
           onDelete(thread.id);
         }}
-        aria-label="Delete conversation"
+        aria-label="Удалить разговор"
         className="absolute right-2 top-2 hidden rounded-md p-1 text-muted-foreground transition hover:bg-white/10 hover:text-destructive group-hover:block"
       >
         <Trash2 className="h-3.5 w-3.5" />
@@ -216,9 +216,9 @@ function groupThreads(threads: Thread[]) {
   }
 
   return [
-    { label: "Today", items: today },
-    { label: "Yesterday", items: yesterday },
-    { label: "This week", items: week },
-    { label: "Earlier", items: older },
+    { label: "Сегодня", items: today },
+    { label: "Вчера", items: yesterday },
+    { label: "На этой неделе", items: week },
+    { label: "Ранее", items: older },
   ].filter((g) => g.items.length > 0);
 }

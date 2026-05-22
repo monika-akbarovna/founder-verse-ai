@@ -93,12 +93,12 @@ function deriveScores(messages: UIMessage[], threadId: string): Scores {
   const burn = clamp(40 + ((h >> 4) & 0x3f));
 
   const signals: Scores["signals"] = [];
-  if (conviction >= 70) signals.push({ label: "Strong founder–market fit", tone: "pos" });
-  if (marketTiming >= 70) signals.push({ label: "Excellent market timing", tone: "pos" });
-  if (viral >= 75) signals.push({ label: "Unicorn-grade upside", tone: "pos" });
-  if (risk >= 70) signals.push({ label: "CAC / burn pressure", tone: "neg" });
-  if (conviction < 45) signals.push({ label: "Differentiation weak", tone: "neg" });
-  if (signals.length === 0) signals.push({ label: "Awaiting more diligence", tone: "neu" });
+  if (conviction >= 70) signals.push({ label: "Сильный founder–market fit", tone: "pos" });
+  if (marketTiming >= 70) signals.push({ label: "Отличный тайминг рынка", tone: "pos" });
+  if (viral >= 75) signals.push({ label: "Апсайд уровня единорога", tone: "pos" });
+  if (risk >= 70) signals.push({ label: "Давление по CAC / burn", tone: "neg" });
+  if (conviction < 45) signals.push({ label: "Слабая дифференциация", tone: "neg" });
+  if (signals.length === 0) signals.push({ label: "Нужно больше диалога", tone: "neu" });
 
   return { conviction, risk, marketTiming, viral, valuation: { low, high, label }, burn, signals };
 }

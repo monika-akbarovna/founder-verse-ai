@@ -5,8 +5,8 @@ import { InvestorChatWithAnalytics } from "@/components/investor/InvestorChat";
 export const Route = createFileRoute("/investor/$threadId")({
   head: () => ({
     meta: [
-      { title: "AI Investor Chat — FounderVerse" },
-      { name: "description", content: "Conversation with NOVA-VC, a synthetic Silicon Valley VC partner." },
+      { title: "Чат с ИИ-инвестором — FounderVerse" },
+      { name: "description", content: "Разговор с NOVA-VC — синтетическим VC-партнёром из Кремниевой долины." },
     ],
   }),
   component: ThreadPage,

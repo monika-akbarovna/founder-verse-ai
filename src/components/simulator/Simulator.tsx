@@ -30,11 +30,11 @@ export type Prediction = {
   verdict: "Bullish" | "Cautious" | "High Risk";
 };
 
-const PRICING_OPTIONS = ["Freemium", "Subscription", "Usage-based", "One-time", "Marketplace"];
-const BUSINESS_TYPES = ["B2B SaaS", "B2C App", "Marketplace", "AI / ML", "Fintech", "DevTool", "Hardware"];
+const PRICING_OPTIONS = ["Freemium", "Подписка", "Usage-based", "Разовая оплата", "Маркетплейс"];
+const BUSINESS_TYPES = ["B2B SaaS", "B2C-приложение", "Маркетплейс", "AI / ML", "Финтех", "DevTool", "Hardware"];
 
 export function Simulator() {
-  const [form, setForm] = useState<FormState>({ idea: "", audience: "", pricing: "Subscription", businessType: "B2B SaaS" });
+  const [form, setForm] = useState<FormState>({ idea: "", audience: "", pricing: "Подписка", businessType: "B2B SaaS" });
   const [phase, setPhase] = useState<"idle" | "loading" | "done">("idle");
   const [result, setResult] = useState<Prediction | null>(null);
 
@@ -67,20 +67,20 @@ export function Simulator() {
             className="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10px] uppercase tracking-[0.2em] text-muted-foreground"
           >
             <span className="h-1 w-1 rounded-full bg-[var(--neon-cyan)] shadow-[0_0_8px_var(--neon-cyan)]" />
-            Live Simulator · v3.2
+            Живой симулятор · v3.2
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
             className="mx-auto mt-6 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-[-0.03em] md:text-6xl"
           >
-            <span className="text-gradient">Run your startup through</span>{" "}
-            <span className="text-gradient-brand">a simulated reality</span>
+            <span className="text-gradient">Прогоните свой стартап через</span>{" "}
+            <span className="text-gradient-brand">симулированную реальность</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
             className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground"
           >
-            Six AI agents will model 18 months of growth, investor reactions, competitors, and risks — before you spend a dollar.
+            Шесть ИИ-агентов смоделируют 18 месяцев роста, реакции инвесторов, конкурентов и риски — до того, как вы потратите доллар.
           </motion.p>
         </div>
 
@@ -92,35 +92,35 @@ export function Simulator() {
           <div className="rounded-[1.25rem] bg-[oklch(0.1_0.02_270)] p-6 md:p-8">
             <div className="flex items-center gap-2 border-b border-white/5 pb-4 text-xs text-muted-foreground">
               <Cpu className="h-3.5 w-3.5 text-[var(--neon-purple)]" />
-              founderverse.app / new-simulation
+              founderverse.app / новая-симуляция
               <span className="ml-auto flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_currentColor]" />
-                Agents online
+                Агенты онлайн
               </span>
             </div>
 
             <div className="mt-6 grid gap-5 md:grid-cols-2">
-              <Field label="Startup Idea" hint="One sentence">
+              <Field label="Идея стартапа" hint="Одно предложение">
                 <textarea
                   rows={3}
-                  placeholder="An AI that simulates your startup before you build it."
+                  placeholder="ИИ, который симулирует ваш стартап до того, как вы его построите."
                   value={form.idea}
                   onChange={(e) => setForm({ ...form, idea: e.target.value })}
                   className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none transition-all focus:border-[var(--neon-purple)] focus:bg-white/[0.05] focus:shadow-[0_0_0_4px_oklch(0.7_0.22_280_/_0.12)]"
                 />
               </Field>
-              <Field label="Target Audience" hint="Who pays?">
+              <Field label="Целевая аудитория" hint="Кто платит?">
                 <input
-                  placeholder="Pre-seed and seed-stage founders"
+                  placeholder="Основатели на pre-seed и seed"
                   value={form.audience}
                   onChange={(e) => setForm({ ...form, audience: e.target.value })}
                   className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none transition-all focus:border-[var(--neon-purple)] focus:bg-white/[0.05] focus:shadow-[0_0_0_4px_oklch(0.7_0.22_280_/_0.12)]"
                 />
               </Field>
-              <Field label="Pricing Model">
+              <Field label="Модель монетизации">
                 <Select value={form.pricing} options={PRICING_OPTIONS} onChange={(v) => setForm({ ...form, pricing: v })} />
               </Field>
-              <Field label="Business Type">
+              <Field label="Тип бизнеса">
                 <Select value={form.businessType} options={BUSINESS_TYPES} onChange={(v) => setForm({ ...form, businessType: v })} />
               </Field>
             </div>
@@ -128,7 +128,7 @@ export function Simulator() {
             <div className="mt-7 flex flex-wrap items-center justify-between gap-3 border-t border-white/5 pt-6">
               <div className="flex items-center gap-2 text-xs text-muted-foreground">
                 <Sparkles className="h-3.5 w-3.5 text-[var(--neon-purple)]" />
-                6 agents will simulate ~18 months in 2 seconds
+                6 агентов симулируют ~18 месяцев за 2 секунды
               </div>
               <button
                 onClick={runSimulation}
@@ -137,7 +137,7 @@ export function Simulator() {
               >
                 <span className="relative z-10 inline-flex items-center gap-2">
                   {phase === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : <Rocket className="h-4 w-4" />}
-                  {phase === "loading" ? "Simulating…" : "Run AI Simulation"}
+                  {phase === "loading" ? "Симуляция…" : "Запустить ИИ-симуляцию"}
                   {phase !== "loading" && <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />}
                 </span>
               </button>
@@ -190,12 +190,12 @@ function Select({ value, options, onChange }: { value: string; options: string[]
 
 function LoadingPanel() {
   const steps = [
-    { icon: Brain, label: "Investor agent modeling reactions…" },
-    { icon: Users, label: "Customer agent simulating adoption curves…" },
-    { icon: ShieldAlert, label: "Risk agent stress-testing failure patterns…" },
-    { icon: LineChart, label: "Growth agent forecasting MRR & viral coefficients…" },
-    { icon: MessageSquare, label: "PR agent predicting sentiment & narrative…" },
-    { icon: Sparkles, label: "Synthesizing 18-month forecast…" },
+    { icon: Brain, label: "Агент-инвестор моделирует реакции…" },
+    { icon: Users, label: "Агент-клиент симулирует кривые adoption…" },
+    { icon: ShieldAlert, label: "Агент рисков стресс-тестирует паттерны провала…" },
+    { icon: LineChart, label: "Агент роста прогнозирует MRR и виральные коэффициенты…" },
+    { icon: MessageSquare, label: "PR-агент предсказывает настроение и нарратив…" },
+    { icon: Sparkles, label: "Синтез прогноза на 18 месяцев…" },
   ];
   return (
     <motion.div
@@ -238,10 +238,10 @@ function ResultDashboard({ result, form }: { result: Prediction; form: FormState
       <div className="glass-strong glow-ring reflective relative overflow-hidden rounded-3xl p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Simulation Complete</div>
+            <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Симуляция завершена</div>
             <div className="mt-1 font-display text-xl font-semibold">{form.idea.slice(0, 80)}{form.idea.length > 80 ? "…" : ""}</div>
             <div className="mt-1 text-xs text-muted-foreground">
-              {form.businessType} · {form.pricing} · targeting {form.audience}
+              {form.businessType} · {form.pricing} · аудитория: {form.audience}
             </div>
           </div>
           <Verdict value={result.verdict} />
@@ -250,32 +250,32 @@ function ResultDashboard({ result, form }: { result: Prediction; form: FormState
 
       {/* Score row */}
       <div className="grid gap-5 md:grid-cols-4">
-        <ScoreCard icon={ShieldAlert} label="Survival Score" value={result.survival} color="var(--neon-cyan)" />
-        <ScoreCard icon={DollarSign} label="Investor Confidence" value={result.investor} color="var(--neon-purple)" />
-        <ScoreCard icon={Flame} label="Viral Potential" value={result.viral} color="oklch(0.7 0.22 30)" />
-        <ScoreCard icon={MessageSquare} label="Customer Sentiment" value={result.sentiment} color="var(--neon-blue)" />
+        <ScoreCard icon={ShieldAlert} label="Индекс выживания" value={result.survival} color="var(--neon-cyan)" />
+        <ScoreCard icon={DollarSign} label="Доверие инвесторов" value={result.investor} color="var(--neon-purple)" />
+        <ScoreCard icon={Flame} label="Виральный потенциал" value={result.viral} color="oklch(0.7 0.22 30)" />
+        <ScoreCard icon={MessageSquare} label="Настроение аудитории" value={result.sentiment} color="var(--neon-blue)" />
       </div>
 
       {/* Main grid */}
       <div className="grid gap-5 md:grid-cols-3">
         <div className="md:col-span-2 glass-strong glow-ring reflective hover-lift relative overflow-hidden rounded-3xl p-6">
-          <Header icon={TrendingUp} title="Market Opportunity" hint="18-month projection" />
+          <Header icon={TrendingUp} title="Рыночный потенциал" hint="Прогноз на 18 месяцев" />
           <BigChart series={result.growth} />
           <div className="mt-4 grid grid-cols-3 gap-3 border-t border-white/5 pt-4">
             <Mini label="TAM" value={result.marketSize} accent="var(--neon-purple)" />
-            <Mini label="Projected ARR" value={result.arr} accent="var(--neon-cyan)" />
+            <Mini label="Прогноз ARR" value={result.arr} accent="var(--neon-cyan)" />
             <Mini label="Runway" value={result.runway} accent="var(--neon-blue)" />
           </div>
         </div>
         <div className="glass-strong glow-ring reflective hover-lift relative overflow-hidden rounded-3xl p-6">
-          <Header icon={Activity} title="Burn Rate" hint="Monthly" />
+          <Header icon={Activity} title="Скорость сжигания" hint="В месяц" />
           <div className="mt-6 text-center">
             <div className="font-display text-4xl font-semibold text-gradient">{result.burn}</div>
-            <div className="mt-1 text-xs text-muted-foreground">avg over 12 months</div>
+            <div className="mt-1 text-xs text-muted-foreground">средн. за 12 месяцев</div>
           </div>
           <BurnBars />
           <div className="mt-4 border-t border-white/5 pt-4">
-            <div className="text-xs text-muted-foreground">Capital efficiency</div>
+            <div className="text-xs text-muted-foreground">Эффективность капитала</div>
             <div className="mt-2 h-2 overflow-hidden rounded-full bg-white/[0.06]">
               <motion.div
                 initial={{ width: 0 }} animate={{ width: `${result.investor}%` }} transition={{ duration: 1.4, ease: "easeOut" }}
@@ -288,7 +288,7 @@ function ResultDashboard({ result, form }: { result: Prediction; form: FormState
 
       <div className="grid gap-5 md:grid-cols-3">
         <div className="glass-strong glow-ring reflective hover-lift relative overflow-hidden rounded-3xl p-6 md:col-span-2">
-          <Header icon={Target} title="Competitor Analysis" hint={`${result.competitors.length} key players`} />
+          <Header icon={Target} title="Анализ конкурентов" hint={`${result.competitors.length} ключевых игроков`} />
           <div className="mt-5 space-y-3">
             {result.competitors.map((c, i) => (
               <motion.div
@@ -310,10 +310,10 @@ function ResultDashboard({ result, form }: { result: Prediction; form: FormState
           </div>
         </div>
         <div className="glass-strong glow-ring reflective hover-lift relative overflow-hidden rounded-3xl p-6">
-          <Header icon={MessageSquare} title="Sentiment Pulse" hint="Last 30 days sim" />
+          <Header icon={MessageSquare} title="Пульс настроений" hint="Симуляция за 30 дней" />
           <SentimentChart series={result.sentimentSeries} />
           <div className="mt-3 flex items-center justify-between text-xs">
-            <span className="text-muted-foreground">Net positive</span>
+            <span className="text-muted-foreground">Чистый позитив</span>
             <span className="font-display text-lg font-semibold text-[var(--neon-cyan)]">+{result.sentiment - 50}%</span>
           </div>
         </div>
@@ -321,7 +321,7 @@ function ResultDashboard({ result, form }: { result: Prediction; form: FormState
 
       {/* AI Insights */}
       <div className="glass-strong glow-ring reflective relative overflow-hidden rounded-3xl p-7">
-        <Header icon={Brain} title="AI-Generated Insights" hint="Strategy agent · synthesized" />
+        <Header icon={Brain} title="ИИ-инсайты" hint="Агент стратегии · синтезировано" />
         <div className="mt-5 grid gap-3 md:grid-cols-2">
           {result.insights.map((text, i) => (
             <motion.div
@@ -408,23 +408,24 @@ function CountUp({ to }: { to: number }) {
 
 function Verdict({ value }: { value: Prediction["verdict"] }) {
   const map = {
-    Bullish: { color: "var(--neon-cyan)", label: "Bullish" },
-    Cautious: { color: "var(--neon-blue)", label: "Cautious" },
-    "High Risk": { color: "oklch(0.7 0.22 30)", label: "High Risk" },
+    Bullish: { color: "var(--neon-cyan)", label: "Бычий" },
+    Cautious: { color: "var(--neon-blue)", label: "Осторожно" },
+    "High Risk": { color: "oklch(0.7 0.22 30)", label: "Высокий риск" },
   } as const;
   const v = map[value];
   return (
     <div className="glass flex items-center gap-2 rounded-full px-4 py-2 text-xs" style={{ color: v.color }}>
       <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: v.color, boxShadow: `0 0 10px ${v.color}` }} />
-      Verdict: <span className="font-semibold">{v.label}</span>
+      Вердикт: <span className="font-semibold">{v.label}</span>
     </div>
   );
 }
 
 function ThreatPill({ v }: { v: "Low" | "Medium" | "High" }) {
   const c = v === "High" ? "oklch(0.7 0.22 30)" : v === "Medium" ? "var(--neon-blue)" : "var(--neon-cyan)";
+  const label = v === "High" ? "Высокая" : v === "Medium" ? "Средняя" : "Низкая";
   return (
-    <span className="ml-auto rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ background: `${c}20`, color: c }}>{v}</span>
+    <span className="ml-auto rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ background: `${c}20`, color: c }}>{label}</span>
   );
 }
 
@@ -559,21 +560,22 @@ function simulate(form: FormState): Prediction {
 
 function generateInsights(form: FormState, s: { survival: number; investor: number; viral: number; sentiment: number; verdict: string }): string[] {
   const out: string[] = [];
-  if (s.investor > 75) out.push(`Investor agent rates this ${s.verdict.toLowerCase()} — your ${form.pricing.toLowerCase()} model resonates with current ${form.businessType} thesis at top-decile VCs.`);
-  else out.push(`Investor pushback predicted: tighten the wedge for ${form.audience}. Consider a usage-based tier to lower CAC payback.`);
+  const verdictRu = s.verdict === "Bullish" ? "бычий" : s.verdict === "Cautious" ? "осторожный" : "высокорисковый";
+  if (s.investor > 75) out.push(`Агент-инвестор оценивает кейс как ${verdictRu} — модель «${form.pricing}» резонирует с текущим тезисом ${form.businessType} у топ-VC.`);
+  else out.push(`Прогнозируется пушбэк инвесторов: сузьте wedge под «${form.audience}». Рассмотрите usage-based тариф, чтобы сократить CAC payback.`);
 
-  if (s.viral > 70) out.push(`Viral potential is high — build in product-led referral hooks within the first 14-day activation window to compound growth.`);
-  else out.push(`Viral coefficient is modest. Lean on content + community before paid acquisition to keep CAC under $${50 + (form.businessType === "B2C App" ? 30 : 80)}.`);
+  if (s.viral > 70) out.push(`Виральный потенциал высокий — встройте product-led реферальные хуки в первое 14-дневное окно активации, чтобы рост компаундировался.`);
+  else out.push(`Виральный коэффициент умеренный. Опирайтесь на контент и сообщество до платного привлечения, чтобы держать CAC ниже $${50 + (form.businessType === "B2C-приложение" ? 30 : 80)}.`);
 
-  if (s.survival > 70) out.push(`Risk profile is favorable. Stress test against a 25% MRR shock and validate runway covers 18 months at current burn.`);
-  else out.push(`Survival risk elevated. Cut non-essential burn early and concentrate on 1 ICP — multi-segment GTM will kill momentum.`);
+  if (s.survival > 70) out.push(`Профиль риска благоприятный. Прогоните стресс-тест на шок MRR -25% и убедитесь, что runway покрывает 18 месяцев при текущем burn.`);
+  else out.push(`Риск выживания повышен. Срежьте неключевой burn заранее и сфокусируйтесь на одном ICP — мультисегментный GTM убьёт моментум.`);
 
-  out.push(`Pricing test: A/B a 40% higher anchor for "${form.businessType}" — sentiment data shows ${form.audience} are 22% less price-sensitive than baseline.`);
+  out.push(`Тест прайсинга: A/B якорь +40% для «${form.businessType}» — данные по настроениям показывают, что «${form.audience}» на 22% менее чувствительны к цене относительно базовой линии.`);
 
-  if (s.sentiment > 75) out.push(`Narrative is strong — launch on Product Hunt + a long-form essay; PR agent forecasts 3x baseline pickup.`);
-  else out.push(`Narrative needs sharpening. Reframe the idea around a measurable "before/after" outcome to lift sentiment by ~18 points.`);
+  if (s.sentiment > 75) out.push(`Нарратив сильный — запуск на Product Hunt + лонгрид-эссе; PR-агент прогнозирует 3x базового охвата.`);
+  else out.push(`Нарратив требует заточки. Переформулируйте идею вокруг измеримого «до/после», чтобы поднять sentiment ~на 18 пунктов.`);
 
-  out.push(`Strategy agent suggests a 2-week investor sim before raising — current confidence band is ${s.investor - 8}–${s.investor + 8}%.`);
+  out.push(`Агент стратегии советует 2-недельную симуляцию инвесторов до раунда — текущий доверительный коридор ${s.investor - 8}–${s.investor + 8}%.`);
   return out;
 }
 

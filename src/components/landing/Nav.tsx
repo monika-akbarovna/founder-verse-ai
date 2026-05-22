@@ -3,7 +3,12 @@ import { Sparkles } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 export function Nav() {
-  const links = ["Product", "Agents", "Pricing", "Docs"];
+  const links: { label: string; href: string }[] = [
+    { label: "Продукт", href: "#product" },
+    { label: "Агенты", href: "#agents" },
+    { label: "Тарифы", href: "#pricing" },
+    { label: "Документация", href: "#docs" },
+  ];
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
@@ -20,15 +25,15 @@ export function Nav() {
         </a>
         <ul className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
           {links.map((l) => (
-            <li key={l}>
-              <a href={`#${l.toLowerCase()}`} className="relative transition-colors hover:text-foreground after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-gradient-to-r after:from-[var(--neon-purple)] after:to-[var(--neon-blue)] after:transition-transform after:duration-300 hover:after:scale-x-100">{l}</a>
+            <li key={l.label}>
+              <a href={l.href} className="relative transition-colors hover:text-foreground after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-gradient-to-r after:from-[var(--neon-purple)] after:to-[var(--neon-blue)] after:transition-transform after:duration-300 hover:after:scale-x-100">{l.label}</a>
             </li>
           ))}
         </ul>
         <div className="flex items-center gap-2">
-          <Link to="/investor" className="hidden sm:inline text-sm text-muted-foreground hover:text-foreground transition-colors">AI Investor</Link>
+          <Link to="/investor" className="hidden sm:inline text-sm text-muted-foreground hover:text-foreground transition-colors">ИИ-инвестор</Link>
           <Link to="/simulator" className="shimmer-btn relative rounded-full bg-gradient-primary px-4 py-1.5 text-xs font-semibold text-primary-foreground shadow-glow-purple transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_var(--neon-purple)]">
-            <span className="relative z-10">Launch Sim</span>
+            <span className="relative z-10">Открыть симулятор</span>
           </Link>
         </div>
       </nav>

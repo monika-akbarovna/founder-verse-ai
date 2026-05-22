@@ -65,7 +65,7 @@ export function Hero() {
           className="glass relative inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs text-muted-foreground"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--neon-cyan)] shadow-[0_0_10px_var(--neon-cyan)]" />
-          Now in private beta · Series A backed
+          Закрытая бета · инвестиции Series A
           <ArrowRight className="h-3 w-3" />
         </motion.a>
 
@@ -75,9 +75,9 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.15 }}
           className="mx-auto mt-8 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-[-0.035em] md:text-[5.5rem]"
         >
-          <span className="text-gradient animate-shimmer-text">Simulate Your Startup</span>
+          <span className="text-gradient animate-shimmer-text">Симулируйте свой стартап</span>
           <br />
-          <span className="text-gradient-brand">Before You Risk Real Money</span>
+          <span className="text-gradient-brand">до того, как рискнёте деньгами</span>
         </motion.h1>
 
         <motion.p
@@ -86,8 +86,8 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-muted-foreground"
         >
-          FounderVerse uses AI agents to predict startup growth, investor reactions,
-          risks, and market opportunities — in a cinematic, simulated reality.
+          FounderVerse использует ИИ-агентов, чтобы предсказать рост стартапа,
+          реакции инвесторов, риски и рыночные возможности — в кинематографичной симулированной реальности.
         </motion.p>
 
         <motion.div
@@ -101,7 +101,7 @@ export function Hero() {
             className="shimmer-btn group relative inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow-purple transition-all duration-500 hover:scale-[1.04] hover:shadow-[0_0_80px_-10px_var(--neon-purple)]"
           >
             <span className="relative z-10 flex items-center gap-2">
-              Run Simulation
+              Запустить симуляцию
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>
           </Link>
@@ -112,7 +112,7 @@ export function Hero() {
             <span className="grid h-5 w-5 place-items-center rounded-full bg-white/10 transition-transform group-hover:scale-110">
               <Play className="h-2.5 w-2.5 fill-current" />
             </span>
-            Watch Demo
+            Смотреть демо
           </a>
         </motion.div>
 
@@ -120,7 +120,7 @@ export function Hero() {
         <div className="relative mx-auto mt-20 max-w-5xl">
           <FloatingCard
             icon={<TrendingUp className="h-4 w-4" />}
-            label="MRR Forecast"
+            label="Прогноз MRR"
             value="$284K"
             delta="+38.2%"
             className="absolute -left-6 top-10 hidden md:flex"
@@ -128,7 +128,7 @@ export function Hero() {
           />
           <FloatingCard
             icon={<Activity className="h-4 w-4" />}
-            label="Agent Confidence"
+            label="Уверенность агента"
             value="97%"
             delta="live"
             className="absolute -right-6 top-24 hidden md:flex"
@@ -136,7 +136,7 @@ export function Hero() {
           />
           <FloatingCard
             icon={<DollarSign className="h-4 w-4" />}
-            label="Sim Burn"
+            label="Burn в симуляции"
             value="$48K/mo"
             delta="-12%"
             className="absolute -left-2 bottom-8 hidden lg:flex"
@@ -191,40 +191,40 @@ function DashboardPreview() {
             <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
             <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
             <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
-            <span className="ml-4 text-xs text-muted-foreground">founderverse.app / simulations / acme-ai</span>
+            <span className="ml-4 text-xs text-muted-foreground">founderverse.app / симуляции / acme-ai</span>
           </div>
           <div className="flex items-center gap-2 text-xs text-muted-foreground">
             <Sparkles className="h-3.5 w-3.5 text-[var(--neon-purple)]" />
-            12 agents running
+            12 агентов активны
           </div>
         </div>
 
         {/* Content */}
         <div className="mt-6 grid gap-4 md:grid-cols-3">
-          <StatTile label="18-mo Revenue" value="$3.42M" trend="+214%" />
-          <StatTile label="Runway" value="22 mo" trend="stable" />
-          <StatTile label="Valuation" value="$48M" trend="+62%" />
+          <StatTile label="Выручка за 18 мес" value="$3.42M" trend="+214%" />
+          <StatTile label="Runway" value="22 мес" trend="стабильно" />
+          <StatTile label="Оценка" value="$48M" trend="+62%" />
         </div>
 
         <div className="mt-4 grid gap-4 md:grid-cols-3">
           <div className="md:col-span-2 rounded-2xl border border-white/5 bg-white/[0.02] p-5">
             <div className="flex items-center justify-between">
-              <div className="text-sm font-medium">Growth Simulation</div>
+              <div className="text-sm font-medium">Симуляция роста</div>
               <div className="text-xs text-muted-foreground">Q1 → Q8</div>
             </div>
             <AnimatedChart />
           </div>
           <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-5">
-            <div className="text-sm font-medium">Agent Verdict</div>
+            <div className="text-sm font-medium">Вердикт агентов</div>
             <div className="mt-3 space-y-2.5">
               {[
-                { name: "Investor", v: "Bullish", c: "var(--neon-cyan)" },
-                { name: "Risk", v: "Low", c: "var(--neon-blue)" },
-                { name: "Market", v: "Expanding", c: "var(--neon-purple)" },
-                { name: "Team", v: "Strong", c: "var(--neon-cyan)" },
+                { name: "Инвестор", v: "Бычий", c: "var(--neon-cyan)" },
+                { name: "Риск", v: "Низкий", c: "var(--neon-blue)" },
+                { name: "Рынок", v: "Растёт", c: "var(--neon-purple)" },
+                { name: "Команда", v: "Сильная", c: "var(--neon-cyan)" },
               ].map((a) => (
                 <div key={a.name} className="flex items-center justify-between text-xs">
-                  <span className="text-muted-foreground">{a.name} Agent</span>
+                  <span className="text-muted-foreground">Агент · {a.name}</span>
                   <span className="rounded-full px-2 py-0.5 text-[10px] font-medium" style={{ background: `${a.c as string}20`, color: a.c }}>{a.v}</span>
                 </div>
               ))}

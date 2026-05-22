@@ -7,10 +7,10 @@ import { InvestorAvatar } from "@/components/investor/InvestorChat";
 export const Route = createFileRoute("/investor")({
   head: () => ({
     meta: [
-      { title: "AI Investor Chat — FounderVerse" },
-      { name: "description", content: "Pitch your startup to NOVA-VC, a synthetic Silicon Valley venture capitalist. Get evaluation, market analysis, risk prediction, and a valuation read." },
-      { property: "og:title", content: "AI Investor Chat — FounderVerse" },
-      { property: "og:description", content: "Speak with a futuristic AI venture capitalist." },
+      { title: "Чат с ИИ-инвестором — FounderVerse" },
+      { name: "description", content: "Питчите стартап NOVA-VC — синтетическому венчурному инвестору из Кремниевой долины. Оценка, анализ рынка, прогноз рисков и ориентир по стоимости." },
+      { property: "og:title", content: "Чат с ИИ-инвестором — FounderVerse" },
+      { property: "og:description", content: "Поговорите с футуристичным ИИ-венчуром." },
     ],
   }),
   component: InvestorIndex,
@@ -46,17 +46,17 @@ function InvestorIndex() {
             <InvestorAvatar size="lg" pulse />
           </div>
           <h1 className="font-display text-3xl font-semibold tracking-tight text-gradient">
-            Meet NOVA-VC
+            Знакомьтесь — NOVA-VC
           </h1>
           <p className="mt-3 text-sm text-muted-foreground">
-            A futuristic AI venture capitalist. Pitch your startup and get a blunt, sharp,
-            unicorn-grade verdict in seconds.
+            Футуристичный ИИ-венчур. Питчите стартап и получите прямой, острый
+            вердикт уровня единорога за секунды.
           </p>
           <button
             onClick={onStart}
             className="shimmer-btn relative mt-6 inline-flex items-center gap-2 rounded-full bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow-purple transition hover:scale-105"
           >
-            <span className="relative z-10">Start a deal review</span>
+            <span className="relative z-10">Начать разбор сделки</span>
           </button>
         </div>
       </section>
