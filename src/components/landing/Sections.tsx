@@ -12,6 +12,7 @@ const fadeUp = {
 };
 
 export function TrustedBy() {
+  const logos = ["Sequoia", "a16z", "Y Combinator", "Lightspeed", "Founders Fund", "Index"];
   return (
     <section className="relative py-20">
       <div className="mx-auto max-w-6xl px-6">
