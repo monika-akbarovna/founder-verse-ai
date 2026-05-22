@@ -5,10 +5,10 @@ import { Simulator } from "@/components/simulator/Simulator";
 export const Route = createFileRoute("/simulator")({
   head: () => ({
     meta: [
-      { title: "FounderVerse Simulator — Run an AI startup simulation" },
-      { name: "description", content: "Pressure-test your startup idea with AI agents. Get survival score, investor confidence, market opportunity, and viral potential in seconds." },
-      { property: "og:title", content: "FounderVerse Simulator" },
-      { property: "og:description", content: "Run an AI startup simulation in under a minute." },
+      { title: "Симулятор FounderVerse — запустите ИИ-симуляцию стартапа" },
+      { name: "description", content: "Стресс-тест вашей идеи с ИИ-агентами. Индекс выживания, доверие инвесторов, рыночный потенциал и виральность — за секунды." },
+      { property: "og:title", content: "Симулятор FounderVerse" },
+      { property: "og:description", content: "Запустите ИИ-симуляцию стартапа меньше чем за минуту." },
     ],
   }),
   component: Page,

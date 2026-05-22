@@ -12,12 +12,11 @@ const fadeUp = {
 };
 
 export function TrustedBy() {
-  const logos = ["Sequoia", "a16z", "Y Combinator", "Lightspeed", "Founders Fund", "Index"];
   return (
     <section className="relative py-20">
       <div className="mx-auto max-w-6xl px-6">
         <motion.p {...fadeUp} className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          Trusted by operators from
+          Нам доверяют операторы из
         </motion.p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-70">
           {logos.map((l, i) => (
@@ -40,17 +39,17 @@ export function TrustedBy() {
 
 export function HowItWorks() {
   const steps = [
-    { icon: Briefcase, title: "Describe your startup", body: "Share your idea, market, team, and traction in plain language. No spreadsheets required." },
-    { icon: Cpu, title: "AI agents run the world", body: "Investor, customer, competitor, and risk agents simulate 18 months in seconds." },
-    { icon: Target, title: "See the outcome", body: "Get a cinematic dashboard of growth, valuation, runway, and the moves that change it all." },
+    { icon: Briefcase, title: "Опишите свой стартап", body: "Расскажите про идею, рынок, команду и traction обычным языком. Никаких таблиц." },
+    { icon: Cpu, title: "ИИ-агенты запускают мир", body: "Инвестор, клиент, конкурент и риск-агент симулируют 18 месяцев за секунды." },
+    { icon: Target, title: "Увидьте результат", body: "Получите кинематографичный дашборд роста, оценки, runway и решений, которые всё меняют." },
   ];
   return (
     <section id="product" className="relative py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          eyebrow="How it works"
-          title={<>From idea to <span className="text-gradient-brand">simulated reality</span> in 60 seconds</>}
-          sub="Skip the spreadsheets. FounderVerse runs a multi-agent simulation of your startup against millions of market signals."
+          eyebrow="Как это работает"
+          title={<>От идеи до <span className="text-gradient-brand">симулированной реальности</span> за 60 секунд</>}
+          sub="Забудьте про таблицы. FounderVerse запускает мульти-агентную симуляцию вашего стартапа против миллионов рыночных сигналов."
         />
         <div className="mt-16 grid gap-6 md:grid-cols-3">
           {steps.map((s, i) => (
@@ -63,7 +62,7 @@ export function HowItWorks() {
               <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-primary text-primary-foreground shadow-glow-purple">
                 <s.icon className="h-5 w-5" />
               </div>
-              <div className="text-xs text-muted-foreground">Step 0{i + 1}</div>
+              <div className="text-xs text-muted-foreground">Шаг 0{i + 1}</div>
               <h3 className="mt-1 text-xl font-semibold">{s.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
             </motion.div>
@@ -76,21 +75,21 @@ export function HowItWorks() {
 
 export function AIAgents() {
   const agents = [
-    { icon: Briefcase, name: "Investor Agent", desc: "Simulates VC reactions, pushback, and term sheets across stages.", color: "var(--neon-purple)" },
-    { icon: Users, name: "Customer Agent", desc: "Models adoption curves, churn, and willingness-to-pay across segments.", color: "var(--neon-blue)" },
-    { icon: ShieldAlert, name: "Risk Agent", desc: "Stress-tests your startup against 200+ failure patterns.", color: "oklch(0.7 0.22 30)" },
-    { icon: LineChart, name: "Growth Agent", desc: "Forecasts MRR, CAC, payback, and viral coefficients month over month.", color: "var(--neon-cyan)" },
-    { icon: Brain, name: "Strategy Agent", desc: "Recommends pivots, GTM moves, and pricing experiments worth running.", color: "var(--neon-purple)" },
-    { icon: MessageSquare, name: "PR Agent", desc: "Predicts press, social sentiment, and narrative resonance at launch.", color: "var(--neon-blue)" },
+    { icon: Briefcase, name: "Агент-инвестор", desc: "Моделирует реакции VC, возражения и term sheets на каждой стадии.", color: "var(--neon-purple)" },
+    { icon: Users, name: "Агент-клиент", desc: "Моделирует кривые adoption, churn и готовность платить по сегментам.", color: "var(--neon-blue)" },
+    { icon: ShieldAlert, name: "Агент рисков", desc: "Стресс-тест стартапа против 200+ паттернов провала.", color: "oklch(0.7 0.22 30)" },
+    { icon: LineChart, name: "Агент роста", desc: "Прогнозирует MRR, CAC, payback и виральные коэффициенты помесячно.", color: "var(--neon-cyan)" },
+    { icon: Brain, name: "Агент стратегии", desc: "Предлагает пивоты, GTM-ходы и ценовые эксперименты, которые стоит запустить.", color: "var(--neon-purple)" },
+    { icon: MessageSquare, name: "PR-агент", desc: "Предсказывает прессу, соцсети и резонанс нарратива на запуске.", color: "var(--neon-blue)" },
   ];
   return (
     <section id="agents" className="relative py-28">
       <div className="pointer-events-none absolute inset-0 bg-gradient-hero opacity-50" />
       <div className="relative mx-auto max-w-6xl px-6">
         <SectionHeading
-          eyebrow="AI Agents"
-          title={<>A simulated <span className="text-gradient-brand">org chart</span> for your startup</>}
-          sub="Six specialist agents debate, disagree, and converge — like a brutally honest board meeting."
+          eyebrow="ИИ-агенты"
+          title={<>Симулированный <span className="text-gradient-brand">оргчарт</span> для вашего стартапа</>}
+          sub="Шесть специализированных агентов спорят, расходятся и сходятся — как предельно честный совет директоров."
         />
         <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {agents.map((a, i) => (
@@ -124,9 +123,9 @@ export function DashboardSection() {
     <section className="relative py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          eyebrow="The Cockpit"
-          title={<>Your startup's <span className="text-gradient-brand">command center</span></>}
-          sub="Every simulation produces a real-time, cinematic dashboard you can share with your team and investors."
+          eyebrow="Кокпит"
+          title={<>Командный центр <span className="text-gradient-brand">вашего стартапа</span></>}
+          sub="Каждая симуляция создаёт кинематографичный дашборд в реальном времени — делитесь с командой и инвесторами."
         />
         <motion.div
           {...fadeUp}
@@ -134,7 +133,7 @@ export function DashboardSection() {
         >
           <div className="grid gap-2 rounded-[1.25rem] bg-[oklch(0.1_0.02_270)] p-6 md:grid-cols-12">
             <div className="md:col-span-3 space-y-2">
-              {["Overview", "Agents", "Growth", "Risk", "Scenarios", "Investor Sim"].map((t, i) => (
+              {["Обзор", "Агенты", "Рост", "Риски", "Сценарии", "Сим инвестора"].map((t, i) => (
                 <div key={t} className={`flex items-center gap-2 rounded-xl px-3 py-2 text-sm ${i === 0 ? "bg-white/5 text-foreground" : "text-muted-foreground"}`}>
                   <span className="h-1.5 w-1.5 rounded-full" style={{ background: i === 0 ? "var(--neon-purple)" : "oklch(1 0 0 / 0.2)" }} />
                   {t}
@@ -146,7 +145,7 @@ export function DashboardSection() {
                 {[
                   { l: "ARR", v: "$3.4M", t: "+214%" },
                   { l: "Burn", v: "$48k", t: "-12%" },
-                  { l: "CAC", v: "$84", t: "stable" },
+                  { l: "CAC", v: "$84", t: "стабильно" },
                   { l: "NRR", v: "128%", t: "+9%" },
                 ].map((s) => (
                   <div key={s.l} className="rounded-2xl border border-white/5 bg-white/[0.02] p-4">
@@ -158,10 +157,10 @@ export function DashboardSection() {
               </div>
               <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-5">
                 <div className="flex items-center justify-between">
-                  <div className="text-sm font-medium">18-Month Growth Simulation</div>
+                  <div className="text-sm font-medium">Симуляция роста · 18 месяцев</div>
                   <div className="flex gap-2 text-[10px] text-muted-foreground">
-                    <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-[var(--neon-purple)]" /> Base</span>
-                    <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-[var(--neon-blue)]" /> Aggressive</span>
+                    <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-[var(--neon-purple)]" /> База</span>
+                    <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-full bg-[var(--neon-blue)]" /> Агрессивная</span>
                   </div>
                 </div>
                 <BigChart />
@@ -199,16 +198,16 @@ function BigChart() {
 
 export function Testimonials() {
   const items = [
-    { quote: "FounderVerse told us our pricing was off by 40%. We fixed it before our seed round and closed in 9 days.", name: "Maya Chen", role: "Founder, Northlight AI" },
-    { quote: "The Risk Agent flagged a churn pattern none of our investors saw. It saved us a quarter.", name: "Daniel Park", role: "CEO, Vaultline" },
-    { quote: "It's like running a 3-year operating history in an afternoon. Genuinely unfair advantage.", name: "Sofía Rivera", role: "Partner, Foundry VC" },
+    { quote: "FounderVerse показал, что наш прайс отстаёт на 40%. Мы исправили это перед seed-раундом и закрыли его за 9 дней.", name: "Майя Чен", role: "Основательница, Northlight AI" },
+    { quote: "Агент рисков подсветил паттерн оттока, который не заметил ни один инвестор. Это спасло нам квартал.", name: "Дэниел Парк", role: "CEO, Vaultline" },
+    { quote: "Как прожить 3 года операционки за один вечер. Реально нечестное преимущество.", name: "София Ривера", role: "Партнёр, Foundry VC" },
   ];
   return (
     <section className="relative py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          eyebrow="Operators love it"
-          title={<>Built for founders who <span className="text-gradient-brand">think in systems</span></>}
+          eyebrow="Операторы ценят"
+          title={<>Создано для основателей, которые <span className="text-gradient-brand">мыслят системно</span></>}
         />
         <div className="mt-16 grid gap-5 md:grid-cols-3">
           {items.map((t, i) => (
@@ -230,25 +229,25 @@ export function Testimonials() {
 export function Pricing() {
   const tiers = [
     {
-      name: "Explorer", price: "$0", desc: "For founders kicking the tires.",
-      features: ["1 simulation / month", "3 AI agents", "Basic dashboard", "Community support"],
+      name: "Explorer", price: "$0", desc: "Для основателей, которые присматриваются.",
+      features: ["1 симуляция в месяц", "3 ИИ-агента", "Базовый дашборд", "Поддержка сообщества"],
     },
     {
-      name: "Operator", price: "$49", desc: "For founders building in real life.", highlight: true,
-      features: ["Unlimited simulations", "All 6 AI agents", "Investor reaction sim", "Scenario branching", "Shareable boards"],
+      name: "Operator", price: "$49", desc: "Для основателей, которые уже строят.", highlight: true,
+      features: ["Безлимитные симуляции", "Все 6 ИИ-агентов", "Симуляция реакции инвестора", "Ветвление сценариев", "Шейринг досок"],
     },
     {
-      name: "Fund", price: "Custom", desc: "For VCs and accelerators.",
-      features: ["Portfolio-wide sims", "Custom agents & data", "API access", "SOC2 + SSO", "Dedicated success"],
+      name: "Fund", price: "По запросу", desc: "Для VC и акселераторов.",
+      features: ["Симуляции по портфелю", "Кастомные агенты и данные", "API-доступ", "SOC2 + SSO", "Выделенный успех"],
     },
   ];
   return (
     <section id="pricing" className="relative py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          eyebrow="Pricing"
-          title={<>Predictable plans, <span className="text-gradient-brand">unfair leverage</span></>}
-          sub="Start free. Upgrade when your simulations are paying for themselves."
+          eyebrow="Тарифы"
+          title={<>Предсказуемые планы, <span className="text-gradient-brand">нечестное преимущество</span></>}
+          sub="Начните бесплатно. Перейдите на платный план, когда симуляции окупят себя."
         />
         <div className="mt-16 grid gap-5 md:grid-cols-3">
           {tiers.map((t, i) => (
@@ -260,13 +259,13 @@ export function Pricing() {
             >
               {t.highlight && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-primary px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary-foreground shadow-glow-purple">
-                  Most popular
+                  Самый популярный
                 </div>
               )}
               <div className="text-sm font-medium text-muted-foreground">{t.name}</div>
               <div className="mt-3 flex items-baseline gap-1">
                 <span className="font-display text-4xl font-semibold">{t.price}</span>
-                {t.price.startsWith("$") && t.price !== "$0" && <span className="text-sm text-muted-foreground">/mo</span>}
+                {t.price.startsWith("$") && t.price !== "$0" && <span className="text-sm text-muted-foreground">/мес</span>}
               </div>
               <p className="mt-2 text-sm text-muted-foreground">{t.desc}</p>
               <ul className="mt-6 space-y-3 text-sm">
@@ -283,7 +282,7 @@ export function Pricing() {
                   t.highlight ? "bg-gradient-primary text-primary-foreground shadow-glow-purple" : "border border-white/10 bg-white/[0.04] text-foreground hover:bg-white/[0.08]"
                 }`}
               >
-                {t.name === "Fund" ? "Talk to sales" : "Get started"}
+                {t.name === "Fund" ? "Связаться с отделом продаж" : "Начать"}
                 <ArrowRight className="h-4 w-4" />
               </a>
             </motion.div>
@@ -307,21 +306,21 @@ export function FinalCTA() {
           <div className="relative">
             <Rocket className="mx-auto h-7 w-7 text-[var(--neon-cyan)]" />
             <h2 className="mx-auto mt-5 max-w-2xl text-4xl font-semibold leading-tight md:text-5xl">
-              <span className="text-gradient">Run your first simulation</span>
+              <span className="text-gradient">Запустите первую симуляцию</span>
               <br />
-              <span className="text-gradient-brand">in under a minute.</span>
+              <span className="text-gradient-brand">меньше чем за минуту.</span>
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
-              Join thousands of founders pressure-testing the next billion-dollar startup before they write a single line of code.
+              Тысячи основателей уже тестируют следующий стартап на миллиард до того, как написать первую строку кода.
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
               <a href="#" className="shimmer-btn group inline-flex items-center gap-2 rounded-full bg-gradient-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow-glow-purple transition-all duration-500 hover:scale-[1.05] hover:shadow-[0_0_80px_-10px_var(--neon-purple)]">
                 <span className="relative z-10 inline-flex items-center gap-2">
-                  Run Simulation <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  Запустить симуляцию <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </span>
               </a>
               <a href="#" className="glass inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-white/10">
-                Book a walkthrough
+                Записаться на демо
               </a>
             </div>
           </div>
@@ -333,9 +332,9 @@ export function FinalCTA() {
 
 export function Footer() {
   const cols = [
-    { title: "Product", links: ["Agents", "Dashboard", "Pricing", "Changelog"] },
-    { title: "Company", links: ["About", "Careers", "Press", "Contact"] },
-    { title: "Resources", links: ["Docs", "Guides", "Blog", "Status"] },
+    { title: "Продукт", links: ["Агенты", "Дашборд", "Тарифы", "Changelog"] },
+    { title: "Компания", links: ["О нас", "Карьера", "Пресса", "Контакты"] },
+    { title: "Ресурсы", links: ["Документация", "Гайды", "Блог", "Статус"] },
   ];
   return (
     <footer className="relative border-t border-white/5 py-16">
@@ -348,7 +347,7 @@ export function Footer() {
             <span className="font-display text-sm font-semibold">FounderVerse</span>
           </div>
           <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-            The simulated reality for ambitious founders. Predict the future of your startup, today.
+            Симулированная реальность для амбициозных основателей. Предскажите будущее своего стартапа уже сегодня.
           </p>
         </div>
         {cols.map((c) => (
@@ -363,11 +362,11 @@ export function Footer() {
         ))}
       </div>
       <div className="mx-auto mt-12 flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-xs text-muted-foreground md:flex-row">
-        <div>© 2026 FounderVerse Labs, Inc. All rights reserved.</div>
+        <div>© 2026 FounderVerse Labs, Inc. Все права защищены.</div>
         <div className="flex gap-5">
-          <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-          <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-          <a href="#" className="hover:text-foreground transition-colors">Security</a>
+          <a href="#" className="hover:text-foreground transition-colors">Приватность</a>
+          <a href="#" className="hover:text-foreground transition-colors">Условия</a>
+          <a href="#" className="hover:text-foreground transition-colors">Безопасность</a>
         </div>
       </div>
     </footer>

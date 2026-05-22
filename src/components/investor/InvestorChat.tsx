@@ -7,10 +7,10 @@ import { saveThreadMessages, loadThread } from "./threadStore";
 import { InvestorAnalytics } from "./InvestorAnalytics";
 
 const SUGGESTIONS = [
-  { icon: TrendingUp, label: "Evaluate my startup idea", text: "I'm building a B2B AI agent platform that automates SOC2 compliance for mid-market SaaS. Pre-revenue, two technical co-founders. Evaluate the opportunity." },
-  { icon: Target, label: "Market analysis", text: "Walk me through the market analysis for vertical AI agents in healthcare administration. TAM, wedge, who wins?" },
-  { icon: AlertTriangle, label: "Risk prediction", text: "What are the top 3 risks that would kill a consumer AI companion app right now?" },
-  { icon: Zap, label: "Valuation estimate", text: "Seed-stage AI dev tools company, $40k MRR, 18% MoM growth, 2 founders ex-Stripe. What's a defensible valuation?" },
+  { icon: TrendingUp, label: "Оцени мою идею стартапа", text: "Я строю B2B-платформу ИИ-агентов, которая автоматизирует SOC2-комплаенс для mid-market SaaS. Pre-revenue, два технических со-основателя. Оцени возможность." },
+  { icon: Target, label: "Анализ рынка", text: "Проведи анализ рынка вертикальных ИИ-агентов в healthcare-администрировании. TAM, wedge, кто выигрывает?" },
+  { icon: AlertTriangle, label: "Прогноз рисков", text: "Какие 3 главных риска прямо сейчас могут убить consumer ИИ-компаньона?" },
+  { icon: Zap, label: "Оценка стоимости", text: "Seed-стадия, AI dev tools, $40k MRR, рост 18% м/м, 2 основателя ex-Stripe. Какая обоснованная оценка?" },
 ];
 
 export function InvestorChatWithAnalytics({ threadId }: { threadId: string }) {
@@ -111,11 +111,11 @@ function ChatPane({
             <div className="flex items-center gap-2">
               <h2 className="font-display text-base font-semibold tracking-tight">NOVA-VC</h2>
               <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] uppercase tracking-wider text-muted-foreground">
-                Managing Partner · Sequoia-class
+              Управляющий партнёр · Sequoia-уровень
               </span>
             </div>
             <p className="text-xs text-muted-foreground">
-              {isLoading ? "Thinking through your deal…" : "Online · Ready to evaluate your startup"}
+            {isLoading ? "Думаю над сделкой…" : "Онлайн · готов оценить ваш стартап"}
             </p>
           </div>
         </div>
@@ -138,7 +138,7 @@ function ChatPane({
           )}
           {error && (
             <div className="rounded-xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive-foreground">
-              The investor went silent. {error.message || "Try again in a moment."}
+              Инвестор замолчал. {error.message || "Попробуйте ещё раз через секунду."}
             </div>
           )}
         </div>
@@ -165,7 +165,7 @@ function ChatPane({
                 }
               }}
               rows={1}
-              placeholder="Pitch your startup, ask for a valuation, market read, or risk analysis…"
+              placeholder="Питчите стартап, спросите про оценку, рынок или анализ рисков…"
               className="max-h-40 min-h-[28px] flex-1 resize-none bg-transparent py-2 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none"
             />
             {isLoading ? (
@@ -173,7 +173,7 @@ function ChatPane({
                 type="button"
                 onClick={() => stop()}
                 className="grid h-9 w-9 place-items-center rounded-xl bg-white/10 text-foreground transition hover:bg-white/20"
-                aria-label="Stop"
+                aria-label="Остановить"
               >
                 <Square className="h-4 w-4 fill-current" />
               </button>
@@ -182,14 +182,14 @@ function ChatPane({
                 type="submit"
                 disabled={!input.trim()}
                 className="shimmer-btn relative grid h-9 w-9 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-glow-purple transition disabled:opacity-40 disabled:shadow-none"
-                aria-label="Send"
+                aria-label="Отправить"
               >
                 <ArrowUp className="relative z-10 h-4 w-4" />
               </button>
             )}
           </form>
           <p className="mt-2 text-center text-[10px] text-muted-foreground/70">
-            NOVA-VC delivers blunt VC-style assessments. Not investment advice.
+            NOVA-VC даёт прямые VC-оценки. Не является инвестиционным советом.
           </p>
         </div>
       </div>
@@ -209,11 +209,11 @@ function EmptyState({ onPick }: { onPick: (text: string) => void }) {
         <InvestorAvatar size="lg" pulse />
       </div>
       <h1 className="font-display text-3xl font-semibold tracking-tight text-gradient">
-        Pitch the future. Get a VC verdict.
+        Питчите будущее. Получите VC-вердикт.
       </h1>
       <p className="mt-3 text-sm text-muted-foreground">
-        NOVA-VC is a synthetic Silicon Valley partner. Share your idea, traction, or thesis — get
-        differentiation, market timing, risks, and a directional valuation read.
+        NOVA-VC — синтетический партнёр Кремниевой долины. Поделитесь идеей, traction или тезисом — получите
+        дифференциацию, тайминг рынка, риски и ориентир по оценке.
       </p>
       <div className="mt-8 grid gap-3 sm:grid-cols-2">
         {SUGGESTIONS.map((s) => (
@@ -265,7 +265,7 @@ function MessageBubble({ message }: { message: UIMessage }) {
         <div className="mb-1 flex items-center gap-2 text-[11px] uppercase tracking-wider text-muted-foreground">
           <span className="text-foreground/80">NOVA-VC</span>
           <span className="h-1 w-1 rounded-full bg-[color:var(--neon-cyan)]" />
-          <span>Partner</span>
+          <span>Партнёр</span>
         </div>
         <div className="prose-investor whitespace-pre-wrap break-words text-sm leading-relaxed text-foreground/90">
           {text}
@@ -290,7 +290,7 @@ function ThinkingBubble() {
           <Dot delay={0.3} />
         </span>
         <span className="bg-[linear-gradient(90deg,transparent,oklch(1_0_0/.7),transparent)] bg-[length:200%_100%] bg-clip-text text-transparent animate-shimmer-text">
-          Running diligence on your deal…
+          Провожу due diligence по сделке…
         </span>
       </div>
     </motion.div>
@@ -320,7 +320,7 @@ function StreamingCursor() {
         transition={{ duration: 1.1, repeat: Infinity }}
         style={{ boxShadow: "0 0 10px var(--neon-cyan)" }}
       />
-      Streaming response
+        Потоковый ответ
     </motion.div>
   );
 }

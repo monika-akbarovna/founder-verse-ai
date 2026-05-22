@@ -30,68 +30,68 @@ type Delta = {
 const SCENARIOS: Scenario[] = [
   {
     id: "competitor",
-    label: "Competitor enters market",
-    sub: "Series-B funded, same wedge",
+    label: "Конкурент выходит на рынок",
+    sub: "Series-B, тот же wedge",
     icon: Swords,
     color: "oklch(0.7 0.22 30)",
-    risk: "Distribution & pricing pressure",
+    risk: "Давление на дистрибуцию и цену",
     apply: (p) => transform(p, {
       survival: -14, investor: -10, viral: -6, sentiment: -8,
       growthMult: 0.78, growthVolatility: 0.08, competitorBoost: 18, burnMult: 1.15,
     }),
-    narrative: (d) => `A well-funded competitor compresses your wedge — investor confidence falls ${Math.abs(d.investor)}pts as differentiation risk repriced. Expect a 6–9 month price war.`,
+    narrative: (d) => `Хорошо профинансированный конкурент сжимает ваш wedge — доверие инвесторов падает на ${Math.abs(d.investor)} п. из-за репрайсинга риска дифференциации. Ждите ценовой войны 6–9 месяцев.`,
   },
   {
     id: "ad_costs",
-    label: "Ad costs spike +60%",
-    sub: "iOS / platform CPM shock",
+    label: "Реклама дорожает на +60%",
+    sub: "Шок CPM на iOS и платформах",
     icon: TrendingDown,
     color: "oklch(0.72 0.2 245)",
-    risk: "CAC payback breaks",
+    risk: "CAC payback ломается",
     apply: (p) => transform(p, {
       survival: -8, investor: -6, viral: -3, sentiment: -2,
       growthMult: 0.86, burnMult: 1.35,
     }),
-    narrative: (d) => `CAC payback stretches past 18 months. Survival drops ${Math.abs(d.survival)}pts. Shift mix toward organic, partnerships, or sales-led motion within 60 days.`,
+    narrative: (d) => `CAC payback уходит за 18 месяцев. Выживание падает на ${Math.abs(d.survival)} п. Сместите микс к organic, партнёрствам или sales-led в течение 60 дней.`,
   },
   {
     id: "recession",
-    label: "Recession starts",
-    sub: "Macro tightens, budgets freeze",
+    label: "Начинается рецессия",
+    sub: "Макро сжимается, бюджеты замораживаются",
     icon: CloudLightning,
     color: "oklch(0.65 0.2 20)",
-    risk: "Deal cycles 2–3x longer",
+    risk: "Сделки длятся в 2–3 раза дольше",
     apply: (p) => transform(p, {
       survival: -18, investor: -16, viral: -4, sentiment: -10,
       growthMult: 0.65, burnMult: 0.85,
     }),
-    narrative: (d) => `Budget freezes elongate sales cycles. Investor confidence -${Math.abs(d.investor)}pts. Cut burn 30%, extend runway past 24 months, prioritize cash-positive customers.`,
+    narrative: (d) => `Заморозка бюджетов растягивает циклы продаж. Доверие инвесторов −${Math.abs(d.investor)} п. Сократите burn на 30%, продлите runway за 24 месяца, приоритет — cash-positive клиенты.`,
   },
   {
     id: "pricing",
-    label: "Pricing changes +25%",
-    sub: "Premium reposition",
+    label: "Цены меняются на +25%",
+    sub: "Премиум-репозиционирование",
     icon: Tag,
     color: "oklch(0.72 0.18 165)",
-    risk: "Logo churn spikes short-term",
+    risk: "Краткосрочный всплеск logo churn",
     apply: (p) => transform(p, {
       survival: +4, investor: +9, viral: -4, sentiment: -6,
       growthMult: 1.08, burnMult: 0.95,
     }),
-    narrative: (d) => `Net revenue lifts but logo churn rises. Investors reward gross margin expansion (+${d.investor}pts). Pair with a stronger onboarding moat to defend retention.`,
+    narrative: (d) => `Чистая выручка растёт, но logo churn увеличивается. Инвесторы поощряют рост gross margin (+${d.investor} п.). Усильте онбординг-моат, чтобы защитить retention.`,
   },
   {
     id: "viral",
-    label: "Product goes viral",
-    sub: "Top of HN, 10x traffic spike",
+    label: "Продукт становится виральным",
+    sub: "Топ HN, всплеск трафика в 10x",
     icon: Rocket,
     color: "oklch(0.68 0.25 295)",
-    risk: "Infra & support overload",
+    risk: "Перегрузка инфры и поддержки",
     apply: (p) => transform(p, {
       survival: +6, investor: +18, viral: +24, sentiment: +14,
       growthMult: 1.55, growthVolatility: 0.18, burnMult: 1.2,
     }),
-    narrative: (d) => `Viral spike compresses 6 months of growth into 3 weeks. Investor confidence +${d.investor}pts — but only if infra & support hold. Raise opportunistically within 30 days.`,
+    narrative: (d) => `Виральный всплеск сжимает 6 месяцев роста в 3 недели. Доверие инвесторов +${d.investor} п. — но только если инфра и поддержка выдержат. Поднимайте раунд оппортунистически в 30 дней.`,
   },
 ];
 
@@ -188,14 +188,14 @@ export function WhatIfEngine({ baseline }: { baseline: Prediction }) {
         <div>
           <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
             <span className="h-1 w-1 rounded-full bg-[var(--neon-cyan)] shadow-[0_0_8px_var(--neon-cyan)]" />
-            What-If Scenario Engine
+            Движок «Что, если?»
           </div>
           <h3 className="mt-2 font-display text-2xl font-semibold tracking-[-0.02em] md:text-3xl">
-            <span className="text-gradient">Stress-test your startup</span>{" "}
-            <span className="text-gradient-brand">against the future</span>
+            <span className="text-gradient">Стресс-тест стартапа</span>{" "}
+            <span className="text-gradient-brand">против будущего</span>
           </h3>
           <p className="mt-1 max-w-xl text-sm text-muted-foreground">
-            Inject a real-world shock. NOVA recalculates survival, growth, and investor confidence in real time.
+            Внедрите шок из реального мира. NOVA пересчитывает выживание, рост и доверие инвесторов в реальном времени.
           </p>
         </div>
         <button
@@ -203,7 +203,7 @@ export function WhatIfEngine({ baseline }: { baseline: Prediction }) {
           disabled={!active || recalculating}
           className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs text-muted-foreground transition-all hover:text-foreground disabled:opacity-40"
         >
-          <RotateCcw className="h-3.5 w-3.5" /> Reset baseline
+          <RotateCcw className="h-3.5 w-3.5" /> Сбросить базу
         </button>
       </div>
 
@@ -246,7 +246,7 @@ export function WhatIfEngine({ baseline }: { baseline: Prediction }) {
                 {isActive && (
                   <span className="flex items-center gap-1 text-[var(--neon-cyan)]">
                     <span className="h-1 w-1 rounded-full bg-current shadow-[0_0_8px_currentColor] animate-pulse" />
-                    Active
+                    Активно
                   </span>
                 )}
               </div>
@@ -275,11 +275,11 @@ export function WhatIfEngine({ baseline }: { baseline: Prediction }) {
                     </div>
                   </div>
                   <div className="text-sm text-muted-foreground">
-                    NOVA recalculating <span className="text-foreground">{scenario?.label ?? "baseline"}</span>…
+                    NOVA пересчитывает <span className="text-foreground">{scenario?.label ?? "базовый сценарий"}</span>…
                   </div>
                   <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
                     <Loader2 className="h-3 w-3 animate-spin" />
-                    Re-simulating 18 months · 6 agents
+                    Пересимуляция 18 месяцев · 6 агентов
                   </div>
                 </div>
               </div>
@@ -293,24 +293,24 @@ export function WhatIfEngine({ baseline }: { baseline: Prediction }) {
             >
               {/* Left: deltas */}
               <div className="space-y-3">
-                <DeltaCard icon={ShieldAlert} label="Survival" value={current.survival} delta={delta.survival} color="var(--neon-cyan)" />
-                <DeltaCard icon={DollarSign} label="Investor Confidence" value={current.investor} delta={delta.investor} color="var(--neon-purple)" />
-                <DeltaCard icon={Rocket} label="Viral Potential" value={current.viral} delta={delta.viral} color="oklch(0.7 0.22 30)" />
-                <DeltaCard icon={Activity} label="Sentiment" value={current.sentiment} delta={delta.sentiment} color="var(--neon-blue)" />
+                <DeltaCard icon={ShieldAlert} label="Выживание" value={current.survival} delta={delta.survival} color="var(--neon-cyan)" />
+                <DeltaCard icon={DollarSign} label="Доверие инвесторов" value={current.investor} delta={delta.investor} color="var(--neon-purple)" />
+                <DeltaCard icon={Rocket} label="Виральный потенциал" value={current.viral} delta={delta.viral} color="oklch(0.7 0.22 30)" />
+                <DeltaCard icon={Activity} label="Настроение" value={current.sentiment} delta={delta.sentiment} color="var(--neon-blue)" />
               </div>
 
               {/* Middle/right: chart + narrative */}
               <div className="lg:col-span-2 space-y-5">
                 <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-5">
                   <div className="mb-1 flex items-center justify-between">
-                    <div className="text-sm font-medium">Recalculated Growth Curve</div>
+                    <div className="text-sm font-medium">Пересчитанная кривая роста</div>
                     <div className="flex items-center gap-3 text-[10px] uppercase tracking-wider text-muted-foreground">
                       <span className="inline-flex items-center gap-1">
-                        <span className="h-1.5 w-3 rounded-full bg-white/30" /> Baseline
+                        <span className="h-1.5 w-3 rounded-full bg-white/30" /> База
                       </span>
                       <span className="inline-flex items-center gap-1">
                         <span className="h-1.5 w-3 rounded-full bg-[var(--neon-purple)] shadow-[0_0_8px_var(--neon-purple)]" />
-                        Scenario
+                        Сценарий
                       </span>
                     </div>
                   </div>
@@ -321,16 +321,16 @@ export function WhatIfEngine({ baseline }: { baseline: Prediction }) {
                   <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-4">
                     <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-muted-foreground">
                       <Sparkles className="h-3.5 w-3.5 text-[var(--neon-purple)]" />
-                      AI Risk Analysis
+                      ИИ-анализ рисков
                     </div>
                     <p className="mt-2 text-sm leading-relaxed text-foreground/90">
-                      {scenario ? scenario.narrative(delta) : "Baseline scenario active. Inject a shock above to see how your startup adapts."}
+                      {scenario ? scenario.narrative(delta) : "Активен базовый сценарий. Внедрите шок сверху, чтобы увидеть, как стартап адаптируется."}
                     </p>
                   </div>
                   <div className="rounded-2xl border border-white/8 bg-white/[0.02] p-4">
                     <div className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-muted-foreground">
                       <Activity className="h-3.5 w-3.5 text-[var(--neon-cyan)]" />
-                      Verdict shift
+                      Сдвиг вердикта
                     </div>
                     <div className="mt-2 flex items-center gap-3">
                       <Pill text={baseline.verdict} muted />
@@ -340,7 +340,7 @@ export function WhatIfEngine({ baseline }: { baseline: Prediction }) {
                     <div className="mt-3 text-xs text-muted-foreground">
                       Burn: <span className="text-foreground">{current.burn}</span>
                       {baseline.burn !== current.burn && (
-                        <span className="ml-2 text-[var(--neon-purple)]">(from {baseline.burn})</span>
+                        <span className="ml-2 text-[var(--neon-purple)]">(было {baseline.burn})</span>
                       )}
                     </div>
                   </div>
@@ -463,6 +463,7 @@ function CompareChart({ baseline, current }: { baseline: number[]; current: numb
 
 function Pill({ text, highlight, muted }: { text: string; highlight?: boolean; muted?: boolean }) {
   const color = text === "Bullish" ? "var(--neon-cyan)" : text === "Cautious" ? "var(--neon-blue)" : "oklch(0.7 0.22 30)";
+  const label = text === "Bullish" ? "Бычий" : text === "Cautious" ? "Осторожно" : "Высокий риск";
   return (
     <span
       className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ${
@@ -471,7 +472,7 @@ function Pill({ text, highlight, muted }: { text: string; highlight?: boolean; m
       style={{ background: `${color}18`, color }}
     >
       <span className="h-1.5 w-1.5 rounded-full" style={{ background: color, boxShadow: `0 0 8px ${color}` }} />
-      {text}
+      {label}
     </span>
   );
 }
