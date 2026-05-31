@@ -162,7 +162,7 @@ function Header({ isThinking }: { isThinking: boolean }) {
   return (
     <div className="mb-1 flex items-center justify-between">
       <div className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
-        Deal Terminal
+        Терминал сделки
       </div>
       <div className="flex items-center gap-1.5">
         <span
@@ -172,7 +172,7 @@ function Header({ isThinking }: { isThinking: boolean }) {
           style={{ boxShadow: "0 0 8px currentColor" }}
         />
         <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-          {isThinking ? "Analyzing" : "Live"}
+          {isThinking ? "Анализ" : "В эфире"}
         </span>
       </div>
     </div>
