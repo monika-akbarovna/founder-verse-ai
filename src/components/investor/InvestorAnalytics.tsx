@@ -121,25 +121,25 @@ export function InvestorAnalytics({
 
       <div className="grid grid-cols-2 gap-3">
         <ScoreTile
-          label="Conviction"
+          label="Уверенность"
           value={hasContent ? targets.conviction : 0}
           icon={Flame}
           color="var(--neon-purple)"
         />
         <ScoreTile
-          label="Market Timing"
+          label="Тайминг рынка"
           value={hasContent ? targets.marketTiming : 0}
           icon={Target}
           color="var(--neon-cyan)"
         />
         <ScoreTile
-          label="Viral Potential"
+          label="Виральность"
           value={hasContent ? targets.viral : 0}
           icon={TrendingUp}
           color="var(--neon-blue)"
         />
         <ScoreTile
-          label="Risk Index"
+          label="Индекс риска"
           value={hasContent ? targets.risk : 0}
           icon={ShieldAlert}
           color="oklch(0.7 0.22 25)"
@@ -151,7 +151,7 @@ export function InvestorAnalytics({
 
       <BurnCard value={hasContent ? targets.burn : 0} />
 
-      <SignalsCard signals={hasContent ? targets.signals : [{ label: "Send a pitch to begin", tone: "neu" }]} />
+      <SignalsCard signals={hasContent ? targets.signals : [{ label: "Отправьте питч, чтобы начать", tone: "neu" }]} />
 
       <Pulse isThinking={isThinking} />
     </aside>
@@ -162,7 +162,7 @@ function Header({ isThinking }: { isThinking: boolean }) {
   return (
     <div className="mb-1 flex items-center justify-between">
       <div className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
-        Deal Terminal
+        Терминал сделки
       </div>
       <div className="flex items-center gap-1.5">
         <span
@@ -172,7 +172,7 @@ function Header({ isThinking }: { isThinking: boolean }) {
           style={{ boxShadow: "0 0 8px currentColor" }}
         />
         <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-          {isThinking ? "Analyzing" : "Live"}
+          {isThinking ? "Анализ" : "В эфире"}
         </span>
       </div>
     </div>
@@ -246,7 +246,7 @@ function ValuationCard({
     >
       <div className="flex items-center justify-between">
         <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-          Valuation Read
+          Оценка стоимости
         </span>
         <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[9px] uppercase tracking-wider text-muted-foreground">
           {data.label}
@@ -287,7 +287,7 @@ function ValuationCard({
       </div>
       <div className="mt-1 flex justify-between text-[9px] uppercase tracking-wider text-muted-foreground">
         <span>Q1</span>
-        <span>Q4 fwd</span>
+        <span>Q4 прогноз</span>
       </div>
     </motion.div>
   );
@@ -298,7 +298,7 @@ function BurnCard({ value }: { value: number }) {
   return (
     <motion.div whileHover={{ y: -2 }} className="glass reflective relative overflow-hidden rounded-2xl p-4">
       <div className="flex items-center justify-between">
-        <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Burn Pressure</span>
+        <span className="text-[10px] uppercase tracking-wider text-muted-foreground">Давление burn</span>
         <Wallet className="h-3.5 w-3.5 text-[color:var(--neon-cyan)]" />
       </div>
       <div className="mt-2 flex items-end justify-between">
@@ -306,7 +306,7 @@ function BurnCard({ value }: { value: number }) {
           <div className="font-display text-xl font-semibold tracking-tight tabular-nums">
             {display}%
           </div>
-          <div className="text-[10px] text-muted-foreground">of comfort zone</div>
+          <div className="text-[10px] text-muted-foreground">от зоны комфорта</div>
         </div>
         <RingGauge value={value} />
       </div>
@@ -350,7 +350,7 @@ function SignalsCard({ signals }: { signals: { label: string; tone: "pos" | "neg
     <motion.div whileHover={{ y: -2 }} className="glass reflective relative overflow-hidden rounded-2xl p-4">
       <div className="flex items-center justify-between">
         <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-          AI Signals
+          ИИ-сигналы
         </span>
         <Activity className="h-3.5 w-3.5 text-[color:var(--neon-blue)]" />
       </div>

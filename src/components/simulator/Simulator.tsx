@@ -264,7 +264,7 @@ function ResultDashboard({ result, form }: { result: Prediction; form: FormState
           <div className="mt-4 grid grid-cols-3 gap-3 border-t border-white/5 pt-4">
             <Mini label="TAM" value={result.marketSize} accent="var(--neon-purple)" />
             <Mini label="Прогноз ARR" value={result.arr} accent="var(--neon-cyan)" />
-            <Mini label="Runway" value={result.runway} accent="var(--neon-blue)" />
+            <Mini label="Запас" value={result.runway} accent="var(--neon-blue)" />
           </div>
         </div>
         <div className="glass-strong glow-ring reflective hover-lift relative overflow-hidden rounded-3xl p-6">
@@ -551,8 +551,8 @@ function simulate(form: FormState): Prediction {
   return {
     survival, investor, viral, sentiment, verdict,
     marketSize: `$${(8 + r(0, 40))}B`,
-    burn: `$${burnK}k/mo`,
-    runway: `${runwayMo} months`,
+    burn: `$${burnK}k/мес`,
+    runway: `${runwayMo} мес`,
     arr: `$${arrM}M`,
     competitors, growth, sentimentSeries, insights,
   };

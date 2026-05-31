@@ -130,14 +130,14 @@ export function Hero() {
             icon={<Activity className="h-4 w-4" />}
             label="Уверенность агента"
             value="97%"
-            delta="live"
+            delta="в эфире"
             className="absolute -right-6 top-24 hidden md:flex"
             delay={0.75}
           />
           <FloatingCard
             icon={<DollarSign className="h-4 w-4" />}
             label="Burn в симуляции"
-            value="$48K/mo"
+            value="$48K/мес"
             delta="-12%"
             className="absolute -left-2 bottom-8 hidden lg:flex"
             delay={0.9}
@@ -202,7 +202,7 @@ function DashboardPreview() {
         {/* Content */}
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           <StatTile label="Выручка за 18 мес" value="$3.42M" trend="+214%" />
-          <StatTile label="Runway" value="22 мес" trend="стабильно" />
+          <StatTile label="Запас" value="22 мес" trend="стабильно" />
           <StatTile label="Оценка" value="$48M" trend="+62%" />
         </div>
 
