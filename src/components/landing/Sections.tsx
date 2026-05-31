@@ -145,7 +145,7 @@ export function DashboardSection() {
               <div className="grid gap-3 md:grid-cols-4">
                 {[
                   { l: "ARR", v: "$3.4M", t: "+214%" },
-                  { l: "Burn", v: "$48k", t: "-12%" },
+                  { l: "Сжигание", v: "$48k", t: "-12%" },
                   { l: "CAC", v: "$84", t: "стабильно" },
                   { l: "NRR", v: "128%", t: "+9%" },
                 ].map((s) => (
@@ -333,7 +333,7 @@ export function FinalCTA() {
 
 export function Footer() {
   const cols = [
-    { title: "Продукт", links: ["Агенты", "Дашборд", "Тарифы", "Changelog"] },
+    { title: "Продукт", links: ["Агенты", "Дашборд", "Тарифы", "Журнал"] },
     { title: "Компания", links: ["О нас", "Карьера", "Пресса", "Контакты"] },
     { title: "Ресурсы", links: ["Документация", "Гайды", "Блог", "Статус"] },
   ];
