@@ -121,25 +121,25 @@ export function InvestorAnalytics({
 
       <div className="grid grid-cols-2 gap-3">
         <ScoreTile
-          label="Conviction"
+          label="Уверенность"
           value={hasContent ? targets.conviction : 0}
           icon={Flame}
           color="var(--neon-purple)"
         />
         <ScoreTile
-          label="Market Timing"
+          label="Тайминг рынка"
           value={hasContent ? targets.marketTiming : 0}
           icon={Target}
           color="var(--neon-cyan)"
         />
         <ScoreTile
-          label="Viral Potential"
+          label="Виральность"
           value={hasContent ? targets.viral : 0}
           icon={TrendingUp}
           color="var(--neon-blue)"
         />
         <ScoreTile
-          label="Risk Index"
+          label="Индекс риска"
           value={hasContent ? targets.risk : 0}
           icon={ShieldAlert}
           color="oklch(0.7 0.22 25)"
