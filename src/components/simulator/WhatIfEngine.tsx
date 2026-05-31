@@ -123,7 +123,7 @@ function transform(
   }));
 
   const burnNum = parseInt(base.burn.replace(/[^\d]/g, ""), 10) || 50;
-  const burn = `$${Math.round(burnNum * o.burnMult)}k/mo`;
+  const burn = `$${Math.round(burnNum * o.burnMult)}k/мес`;
 
   const verdict: Prediction["verdict"] =
     survival > 75 && investor > 70 ? "Bullish" : survival > 55 ? "Cautious" : "High Risk";
