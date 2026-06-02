@@ -121,9 +121,9 @@ function useMockInvestorChat(threadId: string) {
           setStatus("streaming");
 
           // Tokenize by word for natural streaming
-          const tokens = reply.match(/\s+|\S+/g) ?? [reply];
+          const tokens: string[] = reply.match(/\s+|\S+/g) ?? [reply];
           let acc = "";
-          tokens.forEach((tok, i) => {
+          tokens.forEach((tok: string, i: number) => {
             const t = setTimeout(() => {
               if (cancelled.current) return;
               acc += tok;
