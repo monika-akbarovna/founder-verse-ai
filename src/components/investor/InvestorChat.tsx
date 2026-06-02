@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { useChat } from "@ai-sdk/react";
-import { DefaultChatTransport, type UIMessage } from "ai";
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { UIMessage } from "ai";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp, Square, TrendingUp, AlertTriangle, Target, Zap } from "lucide-react";
 import { saveThreadMessages, loadThread } from "./threadStore";
 import { InvestorAnalytics } from "./InvestorAnalytics";
+import { generateInvestorReply } from "./mockInvestor";
 
 const SUGGESTIONS = [
   { icon: TrendingUp, label: "Оцени мою идею стартапа", text: "Я строю B2B-платформу ИИ-агентов, которая автоматизирует SOC2-комплаенс для mid-market SaaS. Pre-revenue, два технических со-основателя. Оцени возможность." },
@@ -14,15 +14,7 @@ const SUGGESTIONS = [
 ];
 
 export function InvestorChatWithAnalytics({ threadId }: { threadId: string }) {
-  const [initial] = useState<UIMessage[]>(() => loadThread(threadId)?.messages ?? []);
-  const transport = useMemo(() => new DefaultChatTransport({ api: "/api/chat" }), []);
-
-  const { messages, sendMessage, status, stop, error } = useChat({
-    id: threadId,
-    messages: initial,
-    transport,
-  });
-
+  const { messages, status, error, sendMessage, stop } = useMockInvestorChat(threadId);
   const isLoading = status === "submitted" || status === "streaming";
 
   // Persist messages to localStorage
@@ -39,7 +31,7 @@ export function InvestorChatWithAnalytics({ threadId }: { threadId: string }) {
   const submit = (text: string) => {
     const t = text.trim();
     if (!t || isLoading) return;
-    void sendMessage({ text: t });
+    sendMessage(t);
   };
 
   return (
@@ -60,6 +52,101 @@ export function InvestorChatWithAnalytics({ threadId }: { threadId: string }) {
       />
     </div>
   );
+}
+
+function makeId() {
+  return "m_" + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+}
+
+function useMockInvestorChat(threadId: string) {
+  const [messages, setMessages] = useState<UIMessage[]>(() => loadThread(threadId)?.messages ?? []);
+  const [status, setStatus] = useState<"ready" | "submitted" | "streaming">("ready");
+  const [error, setError] = useState<Error | undefined>(undefined);
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const cancelled = useRef(false);
+
+  const clearTimers = () => {
+    timers.current.forEach(clearTimeout);
+    timers.current = [];
+  };
+
+  useEffect(() => {
+    return () => {
+      cancelled.current = true;
+      clearTimers();
+    };
+  }, []);
+
+  // Persist
+  useEffect(() => {
+    if (messages.length === 0) return;
+    const firstUser = messages.find((m) => m.role === "user");
+    const hint = firstUser?.parts.map((p) => (p.type === "text" ? p.text : "")).join(" ").trim();
+    saveThreadMessages(threadId, messages, hint);
+  }, [messages, threadId]);
+
+  const stop = useCallback(() => {
+    clearTimers();
+    setStatus("ready");
+  }, []);
+
+  const sendMessage = useCallback(
+    (text: string) => {
+      setError(undefined);
+      const userMsg: UIMessage = {
+        id: makeId(),
+        role: "user",
+        parts: [{ type: "text", text }],
+      } as UIMessage;
+
+      const assistantId = makeId();
+      let history: UIMessage[] = [];
+      setMessages((prev) => {
+        history = [...prev, userMsg];
+        return history;
+      });
+      setStatus("submitted");
+
+      // Think delay
+      const thinkDelay = 700 + Math.random() * 900;
+      timers.current.push(
+        setTimeout(() => {
+          if (cancelled.current) return;
+          const reply = generateInvestorReply(text, history);
+          // Add empty assistant message, then stream tokens
+          setMessages((prev) => [
+            ...prev,
+            { id: assistantId, role: "assistant", parts: [{ type: "text", text: "" }] } as UIMessage,
+          ]);
+          setStatus("streaming");
+
+          // Tokenize by word for natural streaming
+          const tokens: string[] = reply.match(/\s+|\S+/g) ?? [reply];
+          let acc = "";
+          tokens.forEach((tok: string, i: number) => {
+            const t = setTimeout(() => {
+              if (cancelled.current) return;
+              acc += tok;
+              setMessages((prev) =>
+                prev.map((m) =>
+                  m.id === assistantId
+                    ? { ...m, parts: [{ type: "text", text: acc }] }
+                    : m
+                )
+              );
+              if (i === tokens.length - 1) {
+                setStatus("ready");
+              }
+            }, 18 + i * (14 + Math.random() * 22));
+            timers.current.push(t);
+          });
+        }, thinkDelay)
+      );
+    },
+    []
+  );
+
+  return { messages, status, error, sendMessage, stop };
 }
 
 function ChatPane({
