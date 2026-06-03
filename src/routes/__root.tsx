@@ -76,11 +76,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "FounderVerse — симулируйте стартап до того, как рискнёте деньгами" },
       { name: "description", content: "FounderVerse использует ИИ-агентов, чтобы предсказать рост стартапа, реакции инвесторов, риски и рыночные возможности." },
       { name: "author", content: "FounderVerse" },
-      { property: "og:title", content: "FounderVerse — симулируйте свой стартап" },
-      { property: "og:description", content: "ИИ-агенты предсказывают рост стартапа, реакции инвесторов, риски и возможности." },
+      { property: "og:title", content: "FounderVerse — симулируйте стартап до того, как рискнёте деньгами" },
+      { property: "og:description", content: "FounderVerse использует ИИ-агентов, чтобы предсказать рост стартапа, реакции инвесторов, риски и рыночные возможности." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "FounderVerse — симулируйте стартап до того, как рискнёте деньгами" },
+      { name: "twitter:description", content: "FounderVerse использует ИИ-агентов, чтобы предсказать рост стартапа, реакции инвесторов, риски и рыночные возможности." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6122e0d0-9302-4fb7-8613-5978605e5218/id-preview-190482fb--2b80b8a0-2a40-4ed4-8096-bab33472845c.lovable.app-1780389360509.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6122e0d0-9302-4fb7-8613-5978605e5218/id-preview-190482fb--2b80b8a0-2a40-4ed4-8096-bab33472845c.lovable.app-1780389360509.png" },
     ],
     links: [
       {
