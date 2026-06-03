@@ -13,7 +13,6 @@ import { Route as SimulatorRouteImport } from './routes/simulator'
 import { Route as InvestorRouteImport } from './routes/investor'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as InvestorThreadIdRouteImport } from './routes/investor.$threadId'
-import { Route as ApiChatRouteImport } from './routes/api/chat'
 
 const SimulatorRoute = SimulatorRouteImport.update({
   id: '/simulator',
@@ -35,24 +34,17 @@ const InvestorThreadIdRoute = InvestorThreadIdRouteImport.update({
   path: '/$threadId',
   getParentRoute: () => InvestorRoute,
 } as any)
-const ApiChatRoute = ApiChatRouteImport.update({
-  id: '/api/chat',
-  path: '/api/chat',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/investor': typeof InvestorRouteWithChildren
   '/simulator': typeof SimulatorRoute
-  '/api/chat': typeof ApiChatRoute
   '/investor/$threadId': typeof InvestorThreadIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/investor': typeof InvestorRouteWithChildren
   '/simulator': typeof SimulatorRoute
-  '/api/chat': typeof ApiChatRoute
   '/investor/$threadId': typeof InvestorThreadIdRoute
 }
 export interface FileRoutesById {
@@ -60,33 +52,20 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/investor': typeof InvestorRouteWithChildren
   '/simulator': typeof SimulatorRoute
-  '/api/chat': typeof ApiChatRoute
   '/investor/$threadId': typeof InvestorThreadIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/investor'
-    | '/simulator'
-    | '/api/chat'
-    | '/investor/$threadId'
+  fullPaths: '/' | '/investor' | '/simulator' | '/investor/$threadId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/investor' | '/simulator' | '/api/chat' | '/investor/$threadId'
-  id:
-    | '__root__'
-    | '/'
-    | '/investor'
-    | '/simulator'
-    | '/api/chat'
-    | '/investor/$threadId'
+  to: '/' | '/investor' | '/simulator' | '/investor/$threadId'
+  id: '__root__' | '/' | '/investor' | '/simulator' | '/investor/$threadId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   InvestorRoute: typeof InvestorRouteWithChildren
   SimulatorRoute: typeof SimulatorRoute
-  ApiChatRoute: typeof ApiChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -119,13 +98,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InvestorThreadIdRouteImport
       parentRoute: typeof InvestorRoute
     }
-    '/api/chat': {
-      id: '/api/chat'
-      path: '/api/chat'
-      fullPath: '/api/chat'
-      preLoaderRoute: typeof ApiChatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -145,18 +117,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   InvestorRoute: InvestorRouteWithChildren,
   SimulatorRoute: SimulatorRoute,
-  ApiChatRoute: ApiChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
